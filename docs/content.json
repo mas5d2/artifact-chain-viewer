@@ -3454,5 +3454,1356 @@
       "Each measure has an owner and a review cadence",
       "Client agrees these are the numbers success will be judged by"
     ]
+  },
+  "client_opportunity_context": {
+    "tldr": "Why this opportunity exists, what prompted it now, and what's already been said or committed before the team arrived. The institutional memory that stops the project from rediscovering \u2014 or contradicting \u2014 its own origins.",
+    "good": [
+      "Says what actually triggered the engagement \u2014 a leadership change, a failed audit, a competitor move \u2014 not the sanitized version",
+      "Everything already promised to the client is written down, even informally promised",
+      "Prior history with the client is noted: past projects, sore spots, wins",
+      "Short enough to hand to anyone joining the account"
+    ],
+    "template": {
+      "type": "outline",
+      "sections": [
+        [
+          "What prompted this, and why now",
+          "The real trigger and its timing"
+        ],
+        [
+          "What's already known",
+          "Facts about the client, market, and their situation the team should not rediscover"
+        ],
+        [
+          "What's already been said or committed",
+          "Promises, expectations set, numbers mentioned \u2014 formal or not"
+        ],
+        [
+          "Relationship context",
+          "History, sensitivities, and who the champions and skeptics are"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "sections": [
+          [
+            "What prompted this, and why now",
+            "The NCUA audit finding on a stale published rate landed in Q1 and made the website a board topic; simultaneously, the new VP Digital (J. Park, hired from a larger bank) arrived with a mandate to modernize. The finding is the urgency; the hire is the budget."
+          ],
+          [
+            "What's already known",
+            [
+              "Membership flat 3 years while two regional competitors grew",
+              "IT is small and protective of its Azure standard \u2014 a prior vendor proposed AWS and it poisoned the deal",
+              "Compliance (R. Whitfield) has final say over anything rate-adjacent and is thorough, not fast"
+            ]
+          ],
+          [
+            "What's already been said or committed",
+            [
+              "Fiscal-year-end launch mentioned to the board by J. Park \u2014 treat as hard",
+              "'Around $250k' discussed verbally at pitch \u2014 contract not yet reflecting it",
+              "Our pitch demoed a locator concept; they remember it and expect it"
+            ]
+          ],
+          [
+            "Relationship context",
+            "New client, won competitively. J. Park is the champion and moves fast; IT was burned by the last vendor and starts skeptical \u2014 early Azure fluency will buy trust."
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "sections": [
+          [
+            "What prompted this, and why now",
+            "The merger closed in January with a public promise of 'one front door to care'; the three inconsistent websites are the most visible broken piece of that promise. The board reviews merger-integration milestones quarterly \u2014 the site is on that list."
+          ],
+          [
+            "What's already known",
+            [
+              "Three hospitals, three cultures; St. Mary's comms team feels acquired, not merged \u2014 handle with care",
+              "A rebrand project runs in parallel and will land mid-build",
+              "Compliance posture is conservative: anything touching patient data gets legal review"
+            ]
+          ],
+          [
+            "What's already been said or committed",
+            [
+              "CEO said 'find any doctor in the network in three clicks' in a town hall \u2014 it will be quoted back",
+              "9-month timeline committed in the merger integration plan",
+              "HR was promised the careers section would not slip again (it slipped in a prior initiative)"
+            ]
+          ],
+          [
+            "Relationship context",
+            "Existing client (we run one hospital's current site). That history is an asset with IT and a liability with the other two hospitals' teams, who didn't choose us. The CMO is the most effective decision-unblocker \u2014 route clinical questions through her office."
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Written note (one page)",
+      "doc": true,
+      "note": "One page of honest prose. Its value is candor \u2014 if it reads like the proposal, it isn't doing its job."
+    },
+    "dorExtra": [],
+    "dod": [
+      "The real trigger and its timing are stated",
+      "Every commitment already made is captured, including informal ones",
+      "Relationship sensitivities are recorded honestly",
+      "Account and Strategy agree it's the truth, not the pitch"
+    ]
+  },
+  "business_strategy_brief": {
+    "tldr": "The client's business context and strategic priorities, and the role this experience is supposed to play in them. It connects the project to what the client's leadership actually cares about \u2014 so scope arguments can be settled by strategy instead of taste.",
+    "good": [
+      "States the client's strategy in their words, then what it implies for the experience",
+      "Names the pressures \u2014 market, regulatory, organizational \u2014 that shape what matters",
+      "Says what role the experience plays: acquisition engine, trust signal, cost reducer, integration proof",
+      "Downstream artifacts can cite it when scoping gets contested"
+    ],
+    "template": {
+      "type": "outline",
+      "sections": [
+        [
+          "Business context & pressures",
+          "The market, regulatory, and organizational forces in play"
+        ],
+        [
+          "Strategic priorities",
+          "What leadership is actually driving toward, ranked if possible"
+        ],
+        [
+          "Role of the experience",
+          "What job the site/product plays in that strategy"
+        ],
+        [
+          "Implications",
+          "What this means for scope, tone, and tradeoffs"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "sections": [
+          [
+            "Business context & pressures",
+            "Regional credit union squeezed between two faster-growing competitors and a national bank's marketing budget; NCUA scrutiny elevated after the audit finding; member base aging while deposits concentrate in older members."
+          ],
+          [
+            "Strategic priorities",
+            [
+              "Grow membership again \u2014 the board's #1 metric",
+              "Deepen small-business banking (highest margin line)",
+              "Stay clean with the regulator \u2014 no repeat findings"
+            ]
+          ],
+          [
+            "Role of the experience",
+            "The site is the acquisition engine and the compliance surface at once: it must win rate-shoppers while being the most auditable channel Meridian has. It is not a service channel \u2014 online banking handles that."
+          ],
+          [
+            "Implications",
+            [
+              "Rate accuracy beats visual ambition in every tradeoff",
+              "Speed-to-answer is the design ethic: prospects are comparison shopping",
+              "Small-business content earns a page, not a platform \u2014 priority 2 strategy, priority 3 evidence"
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "sections": [
+          [
+            "Business context & pressures",
+            "Post-merger health system needing to prove the merger's consumer value while competitors poach findable specialists; nursing shortage constrains growth; regulatory environment makes any data misstep expensive."
+          ],
+          [
+            "Strategic priorities",
+            [
+              "Make the merger real for patients \u2014 one network, one front door",
+              "Protect and grow referral volume",
+              "Win the nursing recruitment race"
+            ]
+          ],
+          [
+            "Role of the experience",
+            "The site is the merger's public proof: if patients can find any doctor across the network, the merger delivered something visible. Secondarily, it's a recruiting asset in a market where nurses comparison-shop employers."
+          ],
+          [
+            "Implications",
+            [
+              "The directory is the project \u2014 everything else supports it",
+              "Trustworthiness beats completeness: wrong data is worse than missing data (drives the accepting-patients suppression)",
+              "Careers gets real investment because strategy says so, even though traffic says otherwise"
+            ]
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Written document (1-2 pages)",
+      "doc": true,
+      "note": "Short prose. It summarizes and links to the client's own strategy materials rather than restating them at length."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Pressures and priorities are stated and, where possible, ranked",
+      "The experience's role in the strategy is explicit",
+      "Implications are concrete enough to settle a scope argument",
+      "A client leader would recognize their strategy in it"
+    ]
+  },
+  "research_evidence_summary": {
+    "tldr": "The few findings that should actually change decisions \u2014 distilled from whatever research, analytics, and audits exist. Not a research report: a decision-support sheet with the evidence graded honestly.",
+    "good": [
+      "Findings, not data: each entry says what it means, not just what was measured",
+      "Every finding is graded \u2014 strong, moderate, thin \u2014 so it's weighted honestly downstream",
+      "Each names the decisions it should influence",
+      "Contradictory or absent evidence is admitted, not smoothed over"
+    ],
+    "template": {
+      "type": "table",
+      "columns": [
+        "Finding",
+        "Evidence & strength",
+        "What it should influence"
+      ],
+      "rows": [
+        [
+          "Users abandon at the login wall",
+          "Session recordings, n=200, strong",
+          "Whether gated content survives redesign"
+        ],
+        [
+          "Mobile is the majority context",
+          "12 months analytics, strong",
+          "Mobile-first design and testing order"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          [
+            "Rate-seeking dominates: visitors want a number, fast",
+            "40% of organic entries land on rate content; top queries are '[product] rates' \u2014 strong",
+            "Experience architecture (rates hub prominence), performance budget on rate pages"
+          ],
+          [
+            "The phone is the current interface \u2014 the site fails informational tasks",
+            "Call logs: top 5 drivers all answerable online; ~900 calls/mo \u2014 strong",
+            "Success measures baseline, locator and hours priority"
+          ],
+          [
+            "Mobile locator is broken and mobile matters",
+            "71% mobile bounce on locator vs 34% site average \u2014 strong",
+            "Mobile-first locator rebuild, breakpoint priorities"
+          ],
+          [
+            "Members would book branch visits online",
+            "Two branch managers report demand anecdotally; no data \u2014 thin, flagged",
+            "Booking capability priority; validate with vendor pilot metrics after launch"
+          ],
+          [
+            "Blog drives negligible value today",
+            "0.8% of sessions, near-zero assisted conversions \u2014 moderate (attribution is crude)",
+            "Migrate top 50 only; no blog investment this project"
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          [
+            "Provider lookup is the site's job, per the users",
+            "62% of on-site searches are provider names or specialties (2 sites, 12 mo) \u2014 strong",
+            "Directory as flagship; search-first experience architecture"
+          ],
+          [
+            "Patients filter by insurance before anything else",
+            "Patient relations complaint themes + front-desk interviews \u2014 moderate",
+            "Insurance filter placement (above specialty on mobile \u2014 already fed the creative review)"
+          ],
+          [
+            "Directory distrust is earned and specific",
+            "Documented same-physician contradictions across the 3 sites; 6-week update backlog \u2014 strong",
+            "Sync-don't-edit architecture, data-quality validation, suppression of untrustworthy flags"
+          ],
+          [
+            "Referring physicians use workarounds, not the site",
+            "Medical Staff Office call log ~50/wk \u2014 strong for the problem, silent on the fix",
+            "Serve them via the same directory (credentials visible); don't build a portal on this evidence"
+          ],
+          [
+            "No usable analytics baseline for one hospital",
+            "Third site has no analytics installed \u2014 an evidence gap, admitted",
+            "Success measures use proxy baselines; install measurement at cutover"
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "One-page findings table",
+      "doc": true,
+      "note": "One page, linking to the raw research rather than embedding it. If it's growing past a page, it's becoming a report \u2014 cut findings that don't change a decision."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Every finding states its evidence and an honest strength grade",
+      "Every finding names decisions it should influence",
+      "Evidence gaps and contradictions are admitted",
+      "Thin-but-load-bearing findings are flagged for validation"
+    ]
+  },
+  "current_experience_assessment": {
+    "tldr": "A skinny, honest read of the experience as it exists: where it fails people, what actually works, and which constraints are structural. The experience-side twin of Current State \u2014 friction and strengths, not systems.",
+    "good": [
+      "Friction points are specific and evidenced \u2014 'the nav is confusing' doesn't qualify",
+      "Strengths are recorded too: what works today must survive the redesign",
+      "Structural constraints are separated from fixable friction",
+      "It's an assessment, not an audit \u2014 days of work, not weeks"
+    ],
+    "template": {
+      "type": "outline",
+      "sections": [
+        [
+          "Major friction points",
+          "Where the experience fails people, with evidence"
+        ],
+        [
+          "What works",
+          "Strengths to deliberately preserve"
+        ],
+        [
+          "Structural constraints",
+          "What can't change and must be designed around"
+        ],
+        [
+          "Quick reads",
+          "Judgment calls worth making now, cheaply"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "sections": [
+          [
+            "Major friction points",
+            [
+              "Rates live three clicks deep behind product marketing pages \u2014 the #1 task is the hardest task (analytics + mystery shop)",
+              "Locator unusable on phones: fixed-width map, tap targets fail (71% mobile bounce)",
+              "No path from interest to action \u2014 'visit a branch' is the only CTA sitewide"
+            ]
+          ],
+          [
+            "What works",
+            [
+              "Branch staff reputation carries the brand \u2014 members trust people, which booking can leverage",
+              "Rate competitiveness itself: when shoppers find the number, Meridian often wins",
+              "The domain's local SEO position for '[city] credit union' is strong \u2014 don't break URLs casually"
+            ]
+          ],
+          [
+            "Structural constraints",
+            [
+              "Online banking is a separate vendor product \u2014 the site can never absorb those tasks, only route to them",
+              "Compliance review adds latency to any rate-adjacent content \u2014 the experience must be designed for infrequent, batched copy changes"
+            ]
+          ],
+          [
+            "Quick reads",
+            "The blog's low value is content quality, not category \u2014 decided: migrate selectively, don't redesign around content marketing. The homepage tries to serve members and prospects equally and serves neither \u2014 decided: prospects lead."
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "sections": [
+          [
+            "Major friction points",
+            [
+              "Three directories disagree about the same physicians \u2014 trust is broken at the core task (documented contradictions)",
+              "Finding urgent care near you takes 4+ taps on mobile on two of three sites",
+              "Careers handoff to Workday loses 40% of applicants (HR funnel)"
+            ]
+          ],
+          [
+            "What works",
+            [
+              "St. Mary's service-line content is genuinely good \u2014 physician-reviewed, plain-language; it becomes the model and its authors become allies",
+              "The networks' location pages rank well locally \u2014 preserve URL equity through migration",
+              "One hospital's alert banner pattern (ER wait times) is loved internally and by patients"
+            ]
+          ],
+          [
+            "Structural constraints",
+            [
+              "MyChart owns everything post-'contact' \u2014 the experience ends at a handoff by design (PHI boundary)",
+              "Provider data freshness is bounded by the nightly sync \u2014 no design can promise real-time",
+              "Three brands must coexist until (and through) the rebrand"
+            ]
+          ],
+          [
+            "Quick reads",
+            "Site search can't fix the directory problem \u2014 decided: directory search is its own purpose-built thing. The 'accepting new patients' flag does more harm present-and-wrong than absent \u2014 decided early, later formalized as a business rule."
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Written brief (1-2 pages)",
+      "doc": true,
+      "note": "Skinny prose brief. Time-boxed by design \u2014 a heavyweight audit is a different (and rarely necessary) artifact."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Friction points are specific and evidenced",
+      "Strengths to preserve are named",
+      "Structural constraints are separated from fixable problems",
+      "UX and Strategy agree it's honest \u2014 including about what works"
+    ]
+  },
+  "opportunity_scope_brief": {
+    "tldr": "The first written boundary of the engagement: what the opportunity is, what product is expected, roughly what's in, and \u2014 before anything else hardens \u2014 what's known to be out.",
+    "good": [
+      "Written in plain language a new team member reads in five minutes",
+      "The expected product is named \u2014 site, platform, app \u2014 not left to inference",
+      "Known exclusions appear this early on purpose; late exclusions feel like betrayals",
+      "It admits what's still fuzzy instead of faking precision"
+    ],
+    "template": {
+      "type": "outline",
+      "sections": [
+        [
+          "The opportunity",
+          "What the client wants to happen, in a paragraph"
+        ],
+        [
+          "Expected product",
+          "What we currently believe we're making"
+        ],
+        [
+          "Broad scope",
+          "The big blocks that are in"
+        ],
+        [
+          "Known exclusions",
+          "What is already out, and who agreed"
+        ],
+        [
+          "Still fuzzy",
+          "What this brief deliberately doesn't settle yet"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "sections": [
+          [
+            "The opportunity",
+            "Meridian wants its website to stop losing rate-shoppers and start producing branch appointments \u2014 and to make the regulator's rate-accuracy concern structurally impossible to repeat."
+          ],
+          [
+            "Expected product",
+            "A replatformed marketing site with live rate display, branch/ATM locator, and vendor-embedded appointment booking. Not a member portal, not online banking."
+          ],
+          [
+            "Broad scope",
+            [
+              "Replatform and redesign of the marketing site",
+              "Automated rate feed from core banking",
+              "Locator rebuild",
+              "Booking integration",
+              "Selective blog migration"
+            ]
+          ],
+          [
+            "Known exclusions",
+            [
+              "Online account opening \u2014 vendor roadmap, next year (agreed: J. Park at pitch)",
+              "Spanish-language site \u2014 phase 2 (agreed: J. Park)",
+              "Online banking itself \u2014 separate vendor product"
+            ]
+          ],
+          [
+            "Still fuzzy",
+            "Exact product-page count, booking SSO, what happens to 90 legacy blog posts marketing hasn't triaged."
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "sections": [
+          [
+            "The opportunity",
+            "Cascade needs the merger to be visible where patients look first: one site where anyone can find any doctor, location, or service across the three-hospital network."
+          ],
+          [
+            "Expected product",
+            "One unified website replacing three, built around a provider directory fed by credentialing data, with locations, service lines, careers, and news."
+          ],
+          [
+            "Broad scope",
+            [
+              "Unified site on one platform, themed for three brands",
+              "Provider directory with search (the flagship)",
+              "Location finder and service-line pages",
+              "Careers section feeding Workday",
+              "Migration triage of ~5,000 legacy pages"
+            ]
+          ],
+          [
+            "Known exclusions",
+            [
+              "Online scheduling \u2014 phase 2, pending MyChart mapping (agreed: Digital Steering)",
+              "Patient portal and bill pay \u2014 Epic's job, links out",
+              "Foundation/donor site \u2014 stays separate (agreed: Foundation director)"
+            ]
+          ],
+          [
+            "Still fuzzy",
+            "Final keeper-page count from triage, careers integration depth vs link-out, whether urgent-care wait times are launch or phase 2."
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Written document (one page)",
+      "doc": true,
+      "note": "One page of prose. It precedes precision on purpose \u2014 the Project Definition Brief will harden it later."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Opportunity, product, scope blocks, and exclusions are all stated",
+      "Each exclusion names who agreed to it",
+      "Fuzzy areas are labeled fuzzy rather than silently omitted",
+      "Client has seen it \u2014 this is the earliest cheap moment to catch a mismatch"
+    ]
+  },
+  "commercial_delivery_constraints": {
+    "tldr": "The commercial truth of the engagement in one place: budget, timeline, contractual commitments, assumptions, and delivery constraints. What the contract means for the people doing the work.",
+    "good": [
+      "Numbers and dates are the real ones, including softness where they're soft",
+      "Contractual commitments are translated into delivery consequences, not just quoted",
+      "Assumptions that priced the deal are listed \u2014 they're where surprises hide",
+      "Constraint conflicts are surfaced here, not discovered in sprint 6"
+    ],
+    "template": {
+      "type": "table",
+      "columns": [
+        "Constraint",
+        "Detail",
+        "Source",
+        "Delivery consequence"
+      ],
+      "rows": [
+        [
+          "Budget",
+          "$X fixed / T&M to cap",
+          "Contract",
+          "Scope flexes, not price \u2014 change control from day one"
+        ],
+        [
+          "Timeline",
+          "Launch by <date>, drives <event>",
+          "SOW",
+          "Sequence must front-load risk; no late discovery"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          [
+            "Budget",
+            "$250k fixed fee \u2014 verbal 'around $250k' now contracted at exactly that",
+            "Contract \u00a72",
+            "Scope control is the project's shock absorber; the 12-product build is phased for this reason"
+          ],
+          [
+            "Timeline",
+            "Launch by Oct 31 (fiscal year end) \u2014 stated to the board",
+            "SOW + board deck",
+            "Treat as immovable; rate pipeline (highest risk) goes first; content freeze mid-October"
+          ],
+          [
+            "Compliance review",
+            "All rate-adjacent copy through Whitfield's office",
+            "Client policy, contractually acknowledged",
+            "2-week review latency budgeted per content batch; disclosures batched, never trickled"
+          ],
+          [
+            "Platform constraint",
+            "Must run in Meridian's Azure tenancy",
+            "Contract \u00a74 (IT rider)",
+            "Platform shortlist was pre-constrained; IT reviews deployment design"
+          ],
+          [
+            "Pricing assumption",
+            "Assumed Fiserv provides a documented, working export",
+            "Estimate assumptions appendix",
+            "If the feed needs Fiserv professional services, that's a change order \u2014 flagged to client early"
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          [
+            "Budget",
+            "T&M with a $780k cap across 9 months",
+            "MSA + SOW",
+            "Monthly burn review with the program office; migration labor is the volatile line"
+          ],
+          [
+            "Timeline",
+            "9 months, tied to merger integration milestones reviewed quarterly by the board",
+            "Merger integration plan",
+            "Directory must demo at the month-5 board review \u2014 sequence guarantees it"
+          ],
+          [
+            "Rebrand collision",
+            "Brand refresh lands ~month 6, mid-build",
+            "Client program calendar",
+            "Token-only theming is contractual risk mitigation; one re-skin sprint priced in"
+          ],
+          [
+            "Compliance gate",
+            "Legal reviews anything near patient data",
+            "MSA compliance rider",
+            "PHI boundary designed in from day one; forms inventory maintained for quarterly audit"
+          ],
+          [
+            "Pricing assumption",
+            "Assumed ~800 keeper pages from triage; assumed MD-Staff export exists as described",
+            "Estimate assumptions appendix",
+            "Triage count >1,000 pages or a broken export triggers re-scoping \u2014 both tracked visibly"
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "One-page table",
+      "doc": true,
+      "note": "A table the team actually consults. The contract stays the legal truth; this is its delivery translation \u2014 keep the two consistent."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Budget, timeline, commitments, and assumptions all present with sources",
+      "Every constraint has its delivery consequence stated",
+      "Pricing assumptions are visible to the people who can trip them",
+      "Account and PM agree it matches the contract"
+    ]
+  },
+  "stakeholder_decision_map": {
+    "tldr": "Who owns the outcome, who decides what, who must be consulted, and who merely wants to be heard. The artifact that makes 'the client approved it' a checkable claim.",
+    "good": [
+      "Every decision domain has exactly one decider \u2014 committees are consulted, people decide",
+      "Authority limits are honest: what each person can and cannot approve",
+      "SME ownership is mapped to topics, so questions route without a meeting",
+      "The politically awkward truths are in it, or it's fiction"
+    ],
+    "template": {
+      "type": "table",
+      "columns": [
+        "Person / role",
+        "Owns / decides",
+        "Consulted on",
+        "Notes"
+      ],
+      "rows": [
+        [
+          "A. Rivera, VP Product",
+          "Scope, priority, budget tradeoffs",
+          "Everything",
+          "The single business owner"
+        ],
+        [
+          "Legal (K. Osei)",
+          "Approves: terms, claims, disclaimers",
+          "Anything customer-promising",
+          "48h turnaround, batch requests"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          [
+            "J. Park, VP Digital",
+            "Business owner: scope, priorities, UX decisions, launch go/no-go (with compliance)",
+            "Everything",
+            "Fast, decisive, prefers options over open questions"
+          ],
+          [
+            "R. Whitfield, CCO",
+            "Decides: anything rate-adjacent, disclosures, promo presentation",
+            "Design near rates, launch",
+            "Thorough not fast \u2014 batch requests, 2-week latency, zero appetite for surprises"
+          ],
+          [
+            "D. Alvarez, IT Director",
+            "Decides: infrastructure, access, deployment design",
+            "Integration architecture",
+            "Skeptical from prior vendor; win with Azure competence, never go around him"
+          ],
+          [
+            "T. Nguyen, Marketing Director",
+            "Decides: brand application, product copy, blog keeper-list",
+            "Creative reviews",
+            "Approves creative; cannot approve anything compliance owns"
+          ],
+          [
+            "Branch Operations (L. Chen)",
+            "SME: appointment types, branch data, hours",
+            "Booking UX",
+            "Input authority only \u2014 decisions go to J. Park"
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          [
+            "Digital Steering Committee",
+            "Formally approves: scope changes, launch, cross-hospital disputes",
+            "Monthly",
+            "Approves \u2014 but decisions arrive pre-shaped or they defer; bring recommendations"
+          ],
+          [
+            "Dr. S. Ibarra, CMO",
+            "Decides: anything clinical-facing \u2014 eligibility rules, specialty terms, provider display",
+            "Directory design",
+            "The most effective unblocker in the org; use sparingly and well"
+          ],
+          [
+            "Program Office (M. Okafor)",
+            "Owns: timeline, budget burn, board reporting",
+            "Sequence changes",
+            "Merger-milestone keeper; escalate schedule risk here first"
+          ],
+          [
+            "Medical Staff Office",
+            "SME + owner: credentialing data, specialty mapping, data quality",
+            "Pipeline validation rules",
+            "Owns data truth; cannot approve UX"
+          ],
+          [
+            "Comms leads x3 hospitals",
+            "SME: page triage, bios, service-line content",
+            "Migration decisions",
+            "St. Mary's lead is the rebrand skeptic \u2014 her early wins matter"
+          ],
+          [
+            "Compliance/Legal",
+            "Decides: PHI boundary, forms, analytics config",
+            "Anything data-adjacent",
+            "Quarterly audit rights; design reviews pre-empt findings"
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "One-page table",
+      "doc": true,
+      "note": "A table people check before asking 'who approves this?'. If it's diplomatic instead of true, it will fail exactly when needed."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Every decision domain has one named decider",
+      "Authority limits and consultation rights are explicit",
+      "SME topics are mapped",
+      "Account confirms it's true, not just polite"
+    ]
+  },
+  "component_variants_responsive_rules": {
+    "tldr": "The explicit contract for each component: its variants, states, and exactly how it behaves across breakpoints. Where 'the design' becomes checkable \u2014 Dev builds from it, QA tests against it.",
+    "good": [
+      "Every variant and state is enumerated per component \u2014 hover, focus, error, empty, loading",
+      "Responsive behavior is a rule, not a redraw: what changes at each breakpoint and why",
+      "Edge content is specified: longest string, missing image, zero items",
+      "It lives with the design file as specs, not in a separate document that drifts"
+    ],
+    "template": {
+      "type": "table",
+      "columns": [
+        "Component",
+        "Variants",
+        "States",
+        "Responsive rules"
+      ],
+      "rows": [
+        [
+          "Card",
+          "Default, featured, compact",
+          "Hover, focus, image-missing",
+          "3-up \u22651200, 2-up \u2265768, 1-up below; featured spans full width on mobile"
+        ],
+        [
+          "Nav",
+          "Full, condensed",
+          "Open, scrolled",
+          "Condenses to drawer <768; utility items move into drawer footer"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          [
+            "Rate table",
+            "Standard, promo (gold band), compact (hub cards)",
+            "Fresh, stale (hidden + call CTA), loading skeleton",
+            "Full columns \u2265768; stacked rows below with term as row header; 'as of' timestamp always visible without scroll (compliance)"
+          ],
+          [
+            "Product card",
+            "Default, featured (campaign)",
+            "Hover, focus, no-rate (feed gap)",
+            "3-up \u22651200, 2-up \u2265768, 1-up below; rate figure uses tabular numerals at every size"
+          ],
+          [
+            "Disclosure accordion",
+            "Single, grouped",
+            "Collapsed, expanded, keyboard-focused",
+            "Full-width at all breakpoints; one open at a time; 1,400-word disclosure scrolls internally on mobile"
+          ],
+          [
+            "Booking panel",
+            "Embed, fallback (vendor down)",
+            "Loading, error, confirmed",
+            "Side panel \u22651200 (480px), full-screen takeover below; fallback shows phone CTA + callback form"
+          ],
+          [
+            "Locator",
+            "Map+list, list-only",
+            "Geolocated, denied-location, zero-results",
+            "Split view \u22651200; list-first with map toggle below; tap targets \u226544px (the legacy failure)"
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          [
+            "Provider card",
+            "Full (results), compact (service-line rails)",
+            "Photo, initials-avatar, temporary-badge, focus",
+            "2-up \u22651280, 1-up below; 37-char name + credentials wraps to two lines max, then truncates with title attr"
+          ],
+          [
+            "Filter rail",
+            "Rail, drawer",
+            "Applied-count badge, zero-matches warning",
+            "Rail \u22651280; bottom drawer below with sticky apply bar; insurance filter ordered above specialty on mobile (per approval)"
+          ],
+          [
+            "Search input",
+            "Global header, hero",
+            "Idle, typeahead-open, no-suggestions",
+            "Typeahead caps at 6 results all breakpoints; hero variant becomes header variant on scroll \u2265744"
+          ],
+          [
+            "Location card",
+            "Standard, urgent-care (amber)",
+            "Open, closed, distance-known/unknown",
+            "Urgent-care variant pins to top of results on mobile; distance chip miles-only (per approval)"
+          ],
+          [
+            "Sticky contact bar",
+            "Profile-page only",
+            "Default, scrolled-past-contact",
+            "Mobile only (<744): appears after contact block scrolls out; never overlaps MyChart handoff links"
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Figma specs beside the components",
+      "doc": false,
+      "note": "The artifact is spec annotations living with the component library in Figma. This table is the coverage checklist \u2014 the rules themselves belong next to the drawings they govern."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Every shipped component has variants, states, and responsive rules enumerated",
+      "Edge content behavior is specified, not discovered",
+      "Rules live with the design file, current as of the build",
+      "Dev and QA can check any rendered component against a written rule"
+    ]
+  },
+  "technical_notes": {
+    "tldr": "Only the implementation guidance that's non-obvious and not already written somewhere else. The rarest artifact discipline: most features shouldn't need one \u2014 an empty Technical Notes is a success, not a gap.",
+    "good": [
+      "Every note passes two tests: a competent dev wouldn't guess it, and no other artifact says it",
+      "Notes say why, not just what \u2014 the trap being avoided is named",
+      "Short: three notes that save a day each beat thirty that restate the spec",
+      "Written by whoever hit or foresaw the trap, at the moment it was found"
+    ],
+    "template": {
+      "type": "outline",
+      "sections": [
+        [
+          "The trap",
+          "What a reasonable developer would do that's wrong here"
+        ],
+        [
+          "Do this instead",
+          "The correct approach, concretely"
+        ],
+        [
+          "Why",
+          "The constraint or history that makes it so"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "sections": [
+          [
+            "The trap",
+            [
+              "Caching rate pages on standard TTLs \u2014 a natural CDN default that can serve a stale rate after a feed update, recreating the NCUA finding at CDN speed",
+              "Parsing the Fiserv file with split-on-whitespace \u2014 columns are positional; some values legitimately contain spaces"
+            ]
+          ],
+          [
+            "Do this instead",
+            [
+              "Purge rate-page cache on pipeline write events (event-driven, not TTL); the pipeline exposes a post-write hook for exactly this",
+              "Use the fixed-width column map from spec v3 (in the repo as a tested parser module) \u2014 never string-split"
+            ]
+          ],
+          [
+            "Why",
+            "The compliance model is 'displayed rate always traceable to the last written value' \u2014 any cache layer that can outlive a write breaks the audit story. The parser module already encodes the March correction-sequence quirks; a second parser will re-learn them in production."
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "sections": [
+          [
+            "The trap",
+            [
+              "Rendering anything provider-related from CMS queries \u2014 it works in dev at 50 records and dies at 2,400; also bypasses the eligibility flag applied at index time",
+              "Linking to MyChart with URL parameters that identify a patient context \u2014 instant PHI-boundary violation even if it 'works'"
+            ]
+          ],
+          [
+            "Do this instead",
+            [
+              "All provider reads go through the Typesense index (client is wrapped in /lib/directory); the index is the only place eligibility filtering is guaranteed",
+              "MyChart links are static, parameterless handoffs from an allowlisted link registry \u2014 add new ones to the registry, never inline"
+            ]
+          ],
+          [
+            "Why",
+            "Eligibility (BR-1) is enforced at index build, deliberately \u2014 one enforcement point, auditable. The link registry exists because compliance audits it quarterly; an inline link is an audit finding waiting to be found."
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Short notes in the repo / ticket",
+      "doc": false,
+      "note": "Notes live where devs work \u2014 repo docs or pinned ticket comments, next to the code they protect. This artifact is conditional: most slices legitimately have none."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Every note is non-obvious and stated nowhere else",
+      "Each names the trap, the alternative, and the why",
+      "Located where the affected developer will actually encounter it",
+      "Anything that duplicates spec, story, or model content has been deleted"
+    ]
+  },
+  "final_content_migration_data": {
+    "tldr": "The approved, counted, final content and data for launch: what migrates, how it maps, what redirects, what's excluded, and the record counts that make 'done' checkable.",
+    "good": [
+      "Counts are exact and verified two-sided: source count, migrated count, and the explained difference",
+      "Every retired URL has a redirect decision \u2014 mapped, consolidated, or deliberately 404",
+      "Exclusions are signed off by the content owner, not assumed",
+      "Approval is on this specific dataset, not on the idea of migration"
+    ],
+    "template": {
+      "type": "table",
+      "columns": [
+        "Content / data set",
+        "Source count",
+        "Final count",
+        "Redirects",
+        "Approved by"
+      ],
+      "rows": [
+        [
+          "Articles",
+          "412",
+          "397 (15 excluded, listed)",
+          "All 412 mapped",
+          "Content owner, <date>"
+        ],
+        [
+          "Media",
+          "2,100 files",
+          "1,640 referenced",
+          "n/a",
+          "Marketing, <date>"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          [
+            "Blog articles",
+            "140 legacy posts",
+            "50 migrated per keeper-list",
+            "50 mapped 1:1; 90 retired \u2192 blog hub redirect",
+            "T. Nguyen, 10/12"
+          ],
+          [
+            "Product pages",
+            "12 legacy product pages",
+            "12 rebuilt (3 pilot + 9 fast-follow template)",
+            "All legacy product URLs mapped to new",
+            "T. Nguyen + R. Whitfield (disclosures), 10/14"
+          ],
+          [
+            "Branch data",
+            "22 branches + 90 ATMs",
+            "22 + 87 (3 decommissioned ATMs dropped per network feed)",
+            "Legacy locator URLs \u2192 new locator",
+            "Facilities (L. Chen), 10/10"
+          ],
+          [
+            "Media",
+            "~800 images",
+            "310 referenced by migrated content; unlicensed-unknown set excluded",
+            "n/a",
+            "T. Nguyen, 10/12 \u2014 exclusion list attached"
+          ],
+          [
+            "Disclosures",
+            "n/a (new content type)",
+            "30 approved disclosures, all products covered",
+            "n/a",
+            "R. Whitfield, 10/14 \u2014 approval states verified in CMS"
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          [
+            "Legacy pages (3 sites)",
+            "~5,000",
+            "812 migrated per triage board",
+            "All 5,000 URLs dispositioned: 812 mapped, 3,400 consolidated to section pages, 788 deliberate 410",
+            "Comms leads x3, minuted 3/20"
+          ],
+          [
+            "Provider records",
+            "2,400 in MD-Staff",
+            "2,311 published (89 ineligible per BR-1, exception report attached)",
+            "Legacy directory URLs \u2192 new profiles via NPI match (2,100 matched; rest \u2192 search)",
+            "Medical Staff Office, 3/22"
+          ],
+          [
+            "Locations",
+            "38",
+            "38",
+            "All legacy location URLs mapped",
+            "Facilities, 3/18"
+          ],
+          [
+            "Service-line pages",
+            "~140 across 3 sites",
+            "58 consolidated (St. Mary's content as base)",
+            "All legacy service URLs \u2192 consolidated pages",
+            "Service-line directors, 3/21"
+          ],
+          [
+            "Provider photos",
+            "1,680 available",
+            "1,680 loaded; 631 initials-fallback",
+            "n/a",
+            "Marketing, 3/19 \u2014 remediation backlog handed to client"
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Manifest spreadsheet + the loaded data",
+      "doc": false,
+      "note": "Two inseparable parts: the loaded content itself, and the manifest that proves the counts. The manifest is what gets approved \u2014 approval on vibes is not approval."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Source and final counts reconcile, with differences explained",
+      "Every legacy URL has a redirect disposition",
+      "Exclusions are listed and signed by the content owner",
+      "Client approval is recorded against this manifest, dated"
+    ]
+  },
+  "production_configuration": {
+    "tldr": "Everything that makes production actually production: domains, credentials, CDN and cache behavior, analytics, monitoring, and platform settings \u2014 verified, not assumed, before launch depends on it.",
+    "good": [
+      "Every item has a status a stranger can check: configured-and-verified beats 'should be fine'",
+      "Secrets live in the vault; this artifact records that they exist, where, and who can rotate them \u2014 never the values",
+      "Cache and CDN behavior is stated per content class, since that's where launches quietly break",
+      "Monitoring exists for the failures this system is known to have \u2014 including the feed alarms"
+    ],
+    "template": {
+      "type": "table",
+      "columns": [
+        "Item",
+        "Configuration",
+        "Status",
+        "Owner"
+      ],
+      "rows": [
+        [
+          "Domain & TLS",
+          "example.com + www, cert auto-renew",
+          "Verified on prod",
+          "TechOps"
+        ],
+        [
+          "Error monitoring",
+          "Alerts to #proj-alerts, severity rules set",
+          "Test alert fired 6/20",
+          "TechOps"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          [
+            "Domains & TLS",
+            "meridiancu.org apex + www on SWA; cert managed; legacy subdomains inventoried",
+            "Verified; DNS cutover runbook staged",
+            "TechOps + D. Alvarez"
+          ],
+          [
+            "Fiserv prod SFTP",
+            "Key in Azure Key Vault; pipeline identity read-only; rotation owner: Meridian IT annual",
+            "Credential received 10/17, verified with a live pull",
+            "TechOps"
+          ],
+          [
+            "Cache/CDN",
+            "Static pages: 1h TTL; rate pages: event-purge on pipeline write + 5-min safety TTL; locator tiles cached 24h",
+            "Purge verified end-to-end on stage with prod config",
+            "Architecture"
+          ],
+          [
+            "Analytics",
+            "GA4 prod property; no member-identifying params; booking conversions wired to Coconut events",
+            "Verified; compliance reviewed the config 10/15",
+            "TechOps"
+          ],
+          [
+            "Monitoring & alerts",
+            "Feed-age alarm (>60 min \u2192 ops channel, matches BR-3), parse-failure alert, uptime checks, error tracking",
+            "All alarms test-fired 10/16",
+            "TechOps"
+          ],
+          [
+            "Coconut production org",
+            "Prod org keys in vault; SSO deferred (spike outcome); embed domain allowlisted",
+            "Verified with a real test booking, then cancelled",
+            "TechOps"
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          [
+            "Domains & TLS",
+            "cascadehealth.org unified; three legacy domains 301 at cutover; certs managed on Acquia",
+            "Verified; legacy redirect config staged",
+            "TechOps"
+          ],
+          [
+            "MD-Staff prod pipeline",
+            "Service account key in vault; nightly 04:00 run; rotation owner: hospital IT",
+            "Running against prod for 3 weeks; exception reports flowing to Medical Staff Office",
+            "Architecture"
+          ],
+          [
+            "Typesense production",
+            "Prod cluster sized for 2,400 records + 20x search headroom; admin/search keys split in vault",
+            "Load-tested at production volume 3/15",
+            "TechOps"
+          ],
+          [
+            "Cache/CDN",
+            "Pages: 1h TTL; directory API: no-cache (freshness contract); ER/urgent-care pages: static fallback published to CDN",
+            "Failover drill passed 3/17",
+            "TechOps"
+          ],
+          [
+            "Analytics",
+            "GA4 with PHI-safe config: no query strings on directory searches, IP anonymization, form fields never captured",
+            "Compliance sign-off recorded 3/12",
+            "TechOps + Compliance"
+          ],
+          [
+            "Monitoring & alerts",
+            "Sync-failure and row-swing alarms, index-freshness check, uptime on ER pages at 1-min interval",
+            "All test-fired 3/16",
+            "TechOps"
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Checklist + the configuration itself",
+      "doc": false,
+      "note": "The real artifact is configuration living in the platform, vault, and IaC \u2014 this checklist proves each piece exists and was verified. Secret values never appear here."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Every row verified by someone who ran the check, with a date",
+      "All secrets vaulted with named rotation owners",
+      "Cache behavior per content class is stated and tested",
+      "The known failure modes have firing alarms \u2014 test-fired, not assumed"
+    ]
+  },
+  "launch_plan": {
+    "tldr": "The choreography of going live: timing, freeze, deployment steps, validation, rollback, who tells whom, and who's on point when something wobbles. Its quality is measured by how boring launch day is.",
+    "good": [
+      "The runbook is executable by name: every step has an owner and a verification",
+      "Rollback is a tested procedure with a decision owner and criteria \u2014 not a sentence of intent",
+      "The freeze is defined: what stops, when, and the exception path",
+      "The first 48 hours are planned like part of the launch, because they are"
+    ],
+    "template": {
+      "type": "outline",
+      "sections": [
+        [
+          "Timing & freeze",
+          "Launch window, content/code freeze, exception path"
+        ],
+        [
+          "Deployment runbook",
+          "Ordered steps, each with owner and verification"
+        ],
+        [
+          "Validation",
+          "The post-deploy checks that must pass before 'we're live'"
+        ],
+        [
+          "Rollback",
+          "Trigger criteria, decision owner, tested procedure"
+        ],
+        [
+          "Communication & support",
+          "Who tells whom, and who's on point after"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "sections": [
+          [
+            "Timing & freeze",
+            "Launch Tuesday Oct 28, 06:00 (before branch open; three days of slack before the board date). Content freeze Oct 21 \u2014 exceptions only via J. Park + compliance jointly. Code freeze Oct 24 after load test."
+          ],
+          [
+            "Deployment runbook",
+            [
+              "DNS TTL lowered 48h prior (TechOps, verified by dig)",
+              "Prod deploy + smoke suite (Dev lead, CI green)",
+              "Fiserv prod feed live pull + rate spot-check vs core banking (Architecture + Whitfield's delegate)",
+              "DNS cutover (TechOps + D. Alvarez on a call)",
+              "Legacy redirects verified from the mapped list (QA, sampled 50)"
+            ]
+          ],
+          [
+            "Validation",
+            [
+              "All 12 product pages show rates with timestamps matching core banking",
+              "Stale-feed drill: block the feed on stage-with-prod-config, confirm hide behavior",
+              "Booking end-to-end: real booking made and cancelled",
+              "Locator geolocation on iOS + Android physical devices"
+            ]
+          ],
+          [
+            "Rollback",
+            "Criteria: rate accuracy unverifiable, booking down >30 min, or sustained 5xx. Decision: J. Park with D. Alvarez. Procedure: DNS revert to legacy (tested Oct 20; legacy kept warm 2 weeks). Compliance note: legacy rates re-verified before any revert."
+          ],
+          [
+            "Communication & support",
+            "Branch staff briefed Oct 27 with a one-pager; call center gets the 'new site' FAQ; board notified by J. Park post-validation. War room until noon; on-call rota (Dev, TechOps, PM) for 48h; daily rate spot-check for week one."
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "sections": [
+          [
+            "Timing & freeze",
+            "Launch Tuesday Mar 31, 05:00 Pacific (post-nightly-sync, pre-clinic-open; two weeks before the board review). Content freeze Mar 24 except ER/closure alerts \u2014 those never freeze, by design. Merger comms embargo lifts with the launch."
+          ],
+          [
+            "Deployment runbook",
+            [
+              "Final sync run + exception report reviewed by Medical Staff Office (03:00)",
+              "Prod deploy + smoke suite (Dev lead)",
+              "Typesense prod reindex + eligibility spot-check incl. the seeded ineligible record (QA)",
+              "Three legacy domains 301 cutover, one at a time, St. Mary's last (TechOps)",
+              "Redirect sampling: 100 URLs across all three legacy sites (QA)"
+            ]
+          ],
+          [
+            "Validation",
+            [
+              "Directory: 2,311 published, seeded-ineligible absent, search under 1s from three geographies",
+              "Every ER/urgent-care page reachable and correct on mobile",
+              "Careers \u2192 Workday handoff completes a test application",
+              "PHI check: analytics captures no query strings on directory searches"
+            ]
+          ],
+          [
+            "Rollback",
+            "Criteria: directory serving wrong/ineligible providers, sync corruption, or ER pages unreachable. Decision: M. Okafor (program office) with the CMO for clinical-facing issues. Procedure: per-domain DNS revert (legacy sites warm for 30 days) \u2014 partial rollback possible by hospital, tested Mar 20."
+          ],
+          [
+            "Communication & support",
+            "Hospital operators and front desks get the new-directory one-pager; Medical Staff Office is first-line for provider-data reports with a triage path to the pipeline team; CEO comms team notified for the town-hall follow-up. War room to 12:00; on-call 72h; sync exception report reviewed daily for two weeks."
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Runbook + timeline",
+      "doc": false,
+      "note": "A runbook people execute under mild adrenaline \u2014 checklist format, owners bolded, one page per phase. Narrative prose fails at 05:00."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Every runbook step has an owner and a verification",
+      "Rollback has criteria, a decision owner, and has been tested",
+      "Freeze rules and exception paths are agreed by the people they constrain",
+      "Support ownership for the first 48 hours is named and accepted"
+    ]
   }
 }
