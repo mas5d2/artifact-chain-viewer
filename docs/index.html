@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Artifact Docs Index</title>
+<style>
+:root{color-scheme:light dark;--bg:#f4f6f8;--panel:#fff;--text:#17202a;--muted:#65717d;--border:#d8dee5;--gold:#b8860b}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1419;--panel:#171d23;--text:#ecf0f3;--muted:#9aa7b3;--border:#303a44;--gold:#ffd166}}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 Inter,system-ui,sans-serif;background:var(--bg);color:var(--text)}
+main{max-width:820px;margin:0 auto;padding:28px 20px 60px}
+a{color:inherit}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:18px;display:inline-block}
+h1{font-size:26px;margin:0 0 4px}
+h2{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:28px 0 8px}
+.meta{color:var(--muted)}
+.row{display:block;text-decoration:none;background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin:8px 0}
+.row:hover{border-color:var(--gold)}
+.row b{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.row span{color:var(--muted);font-size:13px}
+.row .fmt{font-weight:400;font-size:12px;color:var(--muted);white-space:nowrap}
+.pending{color:var(--muted);font-size:13px;margin-top:24px}
+.err{padding:40px;text-align:center;color:var(--muted)}
+</style></head>
+<body><main id="main"><p class="err">Loading…</p></main>
+<script>
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+Promise.all([fetch('../artifacts.json').then(r=>r.json()),fetch('content.json').then(r=>r.json())]).then(([data,content])=>{
+const byId=id=>data.nodes.find(n=>n.id===id);
+// keystone rule shared with the explorer: flow centrality >= 90% of max
+const down=new Map(),up=new Map();
+for(const x of data.nodes)for(const d of x.dependsOn||[]){if(!byId(d))continue;if(!down.has(d))down.set(d,[]);down.get(d).push(x.id);if(!up.has(x.id))up.set(x.id,[]);up.get(x.id).push(d)}
+const reach=(id,adj)=>{const seen=new Set(),st=[...(adj.get(id)||[])];while(st.length){const c=st.pop();if(seen.has(c))continue;seen.add(c);for(const y of adj.get(c)||[])if(!seen.has(y))st.push(y)}return [...seen].filter(z=>byId(z).type==='artifact').length};
+const score={};let mx=0;
+for(const x of data.nodes){if(x.type!=='artifact')continue;score[x.id]=(reach(x.id,up)+1)*(reach(x.id,down)+1);mx=Math.max(mx,score[x.id])}
+const isKey=id=>score[id]>=.9*mx;
+const stages=Object.entries(data.stages).sort((a,b)=>(a[1].order??99)-(b[1].order??99));
+const documented=data.nodes.filter(n=>content[n.id]);
+const pending=data.nodes.filter(n=>n.type==='artifact'&&!content[n.id]);
+let html=`<a class="crumb" href="../index.html">← Artifact Graph</a>
+<h1>Artifact Docs</h1>
+<p class="meta">${documented.length} of ${data.nodes.filter(n=>n.type==='artifact').length} artifacts documented · ★ marks keystones · ranked by flow centrality within stage</p>`;
+for(const [sid,s] of stages){
+const rows=documented.filter(n=>n.stage===sid).sort((a,b)=>score[b.id]-score[a.id]);
+if(!rows.length)continue;
+html+=`<h2>${esc(s.label||sid)}</h2>`+rows.map(n=>{const m=content[n.id].medium;return `<a class="row" href="artifact.html?id=${encodeURIComponent(n.id)}"><b><span>${isKey(n.id)?'★ ':''}${esc(n.name)}</span>${m?`<span class="fmt">${m.doc?'':'⚠ '}${esc(m.label)}</span>`:''}</b><span>${esc(content[n.id].tldr)}</span></a>`}).join('');}
+if(pending.length)html+=`<p class="pending">Not yet documented (${pending.length}): ${pending.map(n=>esc(n.name)).join(' · ')}</p>`;
+document.getElementById('main').innerHTML=html;
+}).catch(e=>{document.getElementById('main').innerHTML='<p class="err">'+esc(e.message)+'</p>'});
+</script></body></html>

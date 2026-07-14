@@ -36,6 +36,10 @@ td.example{color:var(--muted);font-style:italic}
 .tabbtn.active{border-color:var(--gold);font-weight:600}
 .tabpanel{display:none}.tabpanel.active{display:block}
 .outline p{margin:4px 0 0;font-size:13.5px}
+.outline ul,.outline ol{margin:6px 0 0;padding-left:20px;font-size:13.5px}.outline li{margin:3px 0}
+.medium{border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:14px 0;font-size:13.5px}
+.medium.nondoc{border-color:var(--gold)}
+.medium b{display:block}.medium p{margin:3px 0 0;color:var(--muted)}
 </style></head>
 <body><main id="main"><p class="err">Loading…</p></main>
 <script>
@@ -53,13 +57,18 @@ const getStatus=id=>{if(!project)return null;const x=byId(id);if(x&&x.stage==='f
 const down=new Map(),up=new Map();
 for(const x of data.nodes)for(const d of x.dependsOn||[]){if(!byId(d))continue;if(!down.has(d))down.set(d,[]);down.get(d).push(x.id);if(!up.has(x.id))up.set(x.id,[]);up.get(x.id).push(d)}
 const reach=(id,adj)=>{const seen=new Set(),st=[...(adj.get(id)||[])];while(st.length){const cc=st.pop();if(seen.has(cc))continue;seen.add(cc);for(const y of adj.get(cc)||[])if(!seen.has(y))st.push(y)}return [...seen].filter(z=>byId(z).type==='artifact').length};
+// same keystone rule as the explorer: flow centrality >= 90% of the max
+let maxScore=0;const scoreOf=x=>(reach(x.id,up)+1)*(reach(x.id,down)+1);
+for(const x of data.nodes)if(x.type==='artifact')maxScore=Math.max(maxScore,scoreOf(x));
+const isKey=n.type==='artifact'&&scoreOf(n)>=.9*maxScore;
 const stage=data.stages[n.stage]?.label||n.stage;
 const deps=(n.dependsOn||[]).map(byId).filter(Boolean);
 const pills=a=>(a&&a.length)?`<div class="pills">${a.map(x=>`<span class="pill">${esc(x)}</span>`).join('')}</div>`:'<span class="note">None</span>';
 const dorItem=d=>{const s=getStatus(d.id);const cls=s==='done'?'done':s==='wip'?'wip':'';
 return `<li class="${cls}">${esc(d.name)} is ${d.type==='external-input'?'received':'done'} <span class="who">${d.type==='external-input'?'external · owner: '+esc((d.owner||[]).join(', ')||'—'):'by '+esc((d.author||[]).join(', '))}</span></li>`};
 const renderTable=(cols,rows,placeholder)=>`<div class="tablewrap"><table><thead><tr>${cols.map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(v=>`<td${placeholder?' class="example"':''}>${esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
-const renderOutline=(secs,hint)=>`<div class="card outline">${secs.map(([t,h])=>`<div class="sec"><b>${esc(t)}</b>${hint?`<span>${esc(h)}</span>`:`<p>${esc(h)}</p>`}</div>`).join('')}</div>`;
+const secBody=h=>{if(Array.isArray(h)){const ordered=h.every(x=>/^\d+[.)]\s/.test(x));const items=h.map(x=>`<li>${esc(ordered?x.replace(/^\d+[.)]\s*/,''):x)}</li>`).join('');return ordered?`<ol>${items}</ol>`:`<ul>${items}</ul>`}return `<p>${esc(h)}</p>`};
+const renderOutline=(secs,hint)=>`<div class="card outline">${secs.map(([t,h])=>`<div class="sec"><b>${esc(t)}</b>${hint?`<span>${esc(h)}</span>`:secBody(h)}</div>`).join('')}</div>`;
 const tabs=[];
 if(c&&c.template){
 if(c.template.type==='table')tabs.push({label:'Template',html:renderTable(c.template.columns,c.template.rows,true)+'<p class="note">Columns are the template; italic rows are placeholders. Keep it a table/spreadsheet; it does not need to become a document.</p>'});
@@ -68,10 +77,11 @@ for(const ex of c.examples||[])tabs.push({label:ex.name,html:c.template.type==='
 const tpl=tabs.length?`<div class="tabbar">${tabs.map((t,i)=>`<button class="tabbtn${i?'':' active'}" data-tab="${i}">${esc(t.label)}</button>`).join('')}</div>${tabs.map((t,i)=>`<div class="tabpanel${i?'':' active'}" data-panel="${i}">${t.html}</div>`).join('')}`:'';
 document.title=n.name+' · Artifact Docs';
 document.getElementById('main').innerHTML=`
-<a class="crumb" href="../index.html">← Artifact Graph</a>
-<h1>★ ${esc(n.name)}</h1>
-<div class="meta">${esc(stage)} · Keystone artifact · connects ${reach(qid,up)} upstream artifacts to ${reach(qid,down)} downstream</div>
+<a class="crumb" href="../index.html">← Artifact Graph</a> <a class="crumb" href="index.html">All docs</a>
+<h1>${isKey?'★ ':''}${esc(n.name)}</h1>
+<div class="meta">${esc(stage)}${isKey?' · Keystone artifact':''} · connects ${reach(qid,up)} upstream artifacts to ${reach(qid,down)} downstream</div>
 ${c?`<div class="tldr">${esc(c.tldr)}</div>`:''}
+${c&&c.medium?`<div class="medium${c.medium.doc?'':' nondoc'}"><b>${c.medium.doc?'':'⚠ Not a document · '}Native format: ${esc(c.medium.label)}</b><p>${esc(c.medium.note)}</p></div>`:''}
 <p>${esc(n.description)}</p>
 <h2>Who</h2>
 <p><b>Produced by</b></p>${pills(n.author)}
