@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Artifact Docs</title>
+<style>
+:root{color-scheme:light dark;--bg:#f4f6f8;--panel:#fff;--text:#17202a;--muted:#65717d;--border:#d8dee5;--gold:#b8860b}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1419;--panel:#171d23;--text:#ecf0f3;--muted:#9aa7b3;--border:#303a44;--gold:#ffd166}}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 Inter,system-ui,sans-serif;background:var(--bg);color:var(--text)}
+main{max-width:820px;margin:0 auto;padding:28px 20px 60px}
+a{color:inherit}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:18px;display:inline-block}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:30px 0 10px}
+.meta{color:var(--muted);margin-bottom:14px}
+.tldr{background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:8px;padding:14px 16px;margin:16px 0}
+.pills{display:flex;flex-wrap:wrap;gap:6px}.pill{border:1px solid var(--border);border-radius:999px;padding:3px 9px;font-size:12px;background:var(--panel)}
+ul{padding-left:20px;margin:8px 0}li{margin:5px 0}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+table{border-collapse:collapse;width:100%;font-size:13px;background:var(--panel)}
+.tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:8px}
+th,td{border-bottom:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:color-mix(in srgb,var(--panel) 85%,var(--border));font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:0}
+td.example{color:var(--muted);font-style:italic}
+.check{list-style:none;padding-left:2px}.check li{padding-left:26px;position:relative}
+.check li::before{content:'☐';position:absolute;left:0;color:var(--muted)}
+.check li.done::before{content:'✓';color:#2e7d32;font-weight:700}
+.check li.wip::before{content:'◐';color:#d97706}
+.check li .who{color:var(--muted);font-size:12px}
+.outline .sec{border-bottom:1px dashed var(--border);padding:9px 2px}.outline .sec:last-child{border-bottom:0}
+.outline b{display:block}.outline span{color:var(--muted);font-size:13px}
+.note{color:var(--muted);font-size:13px;margin-top:8px}
+.err{padding:40px;text-align:center;color:var(--muted)}
+.tabbar{display:flex;gap:6px;margin:12px 0 10px;flex-wrap:wrap}
+.tabbtn{font:inherit;color:inherit;background:var(--panel);border:1px solid var(--border);border-radius:7px;padding:6px 11px;cursor:pointer;font-size:13px}
+.tabbtn.active{border-color:var(--gold);font-weight:600}
+.tabpanel{display:none}.tabpanel.active{display:block}
+.outline p{margin:4px 0 0;font-size:13.5px}
+</style></head>
+<body><main id="main"><p class="err">Loading…</p></main>
+<script>
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+const qid=new URLSearchParams(location.search).get('id');
+Promise.all([fetch('../artifacts.json').then(r=>r.json()),fetch('content.json').then(r=>r.json())]).then(([data,content])=>{
+const byId=id=>data.nodes.find(n=>n.id===id);
+const n=byId(qid);
+if(!n){document.getElementById('main').innerHTML='<p class="err">Unknown artifact id.</p>';return}
+const c=content[qid]||null;
+// live project status from the same localStorage the explorer uses
+let project=null;try{project=JSON.parse(localStorage.getItem('artifact-graph-project-v1'))}catch(e){}
+const getStatus=id=>{if(!project)return null;const x=byId(id);if(x&&x.stage==='feature-level'){const fs=project.features||[];if(!fs.length)return 'todo';const st=fs.map(f=>f.status[id]||'todo');return st.every(s=>s==='done')?'done':st.some(s=>s!=='todo')?'wip':'todo'}return project.status[id]||'todo'};
+// reach counts for the "why it matters" line
+const down=new Map(),up=new Map();
+for(const x of data.nodes)for(const d of x.dependsOn||[]){if(!byId(d))continue;if(!down.has(d))down.set(d,[]);down.get(d).push(x.id);if(!up.has(x.id))up.set(x.id,[]);up.get(x.id).push(d)}
+const reach=(id,adj)=>{const seen=new Set(),st=[...(adj.get(id)||[])];while(st.length){const cc=st.pop();if(seen.has(cc))continue;seen.add(cc);for(const y of adj.get(cc)||[])if(!seen.has(y))st.push(y)}return [...seen].filter(z=>byId(z).type==='artifact').length};
+const stage=data.stages[n.stage]?.label||n.stage;
+const deps=(n.dependsOn||[]).map(byId).filter(Boolean);
+const pills=a=>(a&&a.length)?`<div class="pills">${a.map(x=>`<span class="pill">${esc(x)}</span>`).join('')}</div>`:'<span class="note">None</span>';
+const dorItem=d=>{const s=getStatus(d.id);const cls=s==='done'?'done':s==='wip'?'wip':'';
+return `<li class="${cls}">${esc(d.name)} is ${d.type==='external-input'?'received':'done'} <span class="who">${d.type==='external-input'?'external · owner: '+esc((d.owner||[]).join(', ')||'—'):'by '+esc((d.author||[]).join(', '))}</span></li>`};
+const renderTable=(cols,rows,placeholder)=>`<div class="tablewrap"><table><thead><tr>${cols.map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(v=>`<td${placeholder?' class="example"':''}>${esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+const renderOutline=(secs,hint)=>`<div class="card outline">${secs.map(([t,h])=>`<div class="sec"><b>${esc(t)}</b>${hint?`<span>${esc(h)}</span>`:`<p>${esc(h)}</p>`}</div>`).join('')}</div>`;
+const tabs=[];
+if(c&&c.template){
+if(c.template.type==='table')tabs.push({label:'Template',html:renderTable(c.template.columns,c.template.rows,true)+'<p class="note">Columns are the template; italic rows are placeholders. Keep it a table/spreadsheet; it does not need to become a document.</p>'});
+else tabs.push({label:'Template',html:renderOutline(c.template.sections,true)+'<p class="note">Section headings are the template; the grey text says what each needs. A short doc that covers these is done.</p>'});
+for(const ex of c.examples||[])tabs.push({label:ex.name,html:c.template.type==='table'?renderTable(c.template.columns,ex.rows,false):renderOutline(ex.sections,false)});}
+const tpl=tabs.length?`<div class="tabbar">${tabs.map((t,i)=>`<button class="tabbtn${i?'':' active'}" data-tab="${i}">${esc(t.label)}</button>`).join('')}</div>${tabs.map((t,i)=>`<div class="tabpanel${i?'':' active'}" data-panel="${i}">${t.html}</div>`).join('')}`:'';
+document.title=n.name+' · Artifact Docs';
+document.getElementById('main').innerHTML=`
+<a class="crumb" href="../index.html">← Artifact Graph</a>
+<h1>★ ${esc(n.name)}</h1>
+<div class="meta">${esc(stage)} · Keystone artifact · connects ${reach(qid,up)} upstream artifacts to ${reach(qid,down)} downstream</div>
+${c?`<div class="tldr">${esc(c.tldr)}</div>`:''}
+<p>${esc(n.description)}</p>
+<h2>Who</h2>
+<p><b>Produced by</b></p>${pills(n.author)}
+<p><b>Needed by</b></p>${pills(n.neededBy)}
+${c?`<h2>What good looks like</h2><ul>${c.good.map(g=>`<li>${esc(g)}</li>`).join('')}</ul>`:''}
+${tpl?`<h2>Template & examples</h2>${tpl}`:''}
+<h2>Definition of Ready</h2>
+<ul class="check">${deps.map(dorItem).join('')}${(c?.dorExtra||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+${project?'<p class="note">Checkmarks are live from your current project ("'+esc(project.name)+'").</p>':'<p class="note">Start a project in the explorer to see live readiness checkmarks here.</p>'}
+${c?`<h2>Definition of Done</h2><ul class="check">${c.dod.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'<p class="note">No doc content yet for this artifact — the summary and Definition of Ready above are generated from the graph.</p>'}
+`;
+document.querySelectorAll('.tabbtn').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabbtn').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tabpanel').forEach(p=>p.classList.toggle('active',p.dataset.panel===b.dataset.tab))});
+}).catch(e=>{document.getElementById('main').innerHTML='<p class="err">'+esc(e.message)+'</p>'});
+</script></body></html>

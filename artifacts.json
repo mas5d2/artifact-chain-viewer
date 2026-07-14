@@ -1,0 +1,1644 @@
+{
+  "schemaVersion": "2.0",
+  "title": "Technology Artifact Dependency Graph",
+  "description": "A progressive-definition map from client context and strategy through CX, UX, BA, architecture, development, QA, and release.",
+  "edgeDirection": "dependency-to-dependent",
+  "stages": {
+    "external": {
+      "label": "External Input",
+      "order": 0
+    },
+    "upstream-definition": {
+      "label": "Upstream Definition",
+      "order": 1
+    },
+    "project-start": {
+      "label": "Project Start",
+      "order": 2
+    },
+    "feature-level": {
+      "label": "Feature Level",
+      "order": 3
+    },
+    "release": {
+      "label": "Release",
+      "order": 4
+    }
+  },
+  "nodes": [
+    {
+      "id": "client_request",
+      "name": "Client Request / Opportunity",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Initial request, opportunity, or problem statement supplied by the client.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "Account"
+      ]
+    },
+    {
+      "id": "client_stakeholder_input",
+      "name": "Client Stakeholder Input",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Direct input from business stakeholders.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "Account"
+      ]
+    },
+    {
+      "id": "current_research_analytics",
+      "name": "Current-State Research / Analytics",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Existing analytics, research, interviews, audits, or observed behavior.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "Strategy"
+      ]
+    },
+    {
+      "id": "client_budget_timeline",
+      "name": "Client Budget and Timeline",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Known commercial and scheduling constraints.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "Account"
+      ]
+    },
+    {
+      "id": "contractual_commitments",
+      "name": "Contractual Commitments",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Promises, inclusions, exclusions, dates, and obligations already sold or contracted.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "Account"
+      ]
+    },
+    {
+      "id": "client_stakeholder_information",
+      "name": "Client Stakeholder Information",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Names, roles, authority, subject-matter ownership, and approval responsibility.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "Account"
+      ]
+    },
+    {
+      "id": "client_current_state_materials",
+      "name": "Client Current-State Materials",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Existing systems, processes, content, analytics, documentation, and access.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "BA"
+      ]
+    },
+    {
+      "id": "client_brand_system",
+      "name": "Client Brand Guidelines / Existing Design System",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Brand rules, visual standards, reusable components, and existing tokens.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "Creative"
+      ]
+    },
+    {
+      "id": "client_priorities",
+      "name": "Current Client Priorities",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Business priority used to sequence capabilities.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "Account"
+      ]
+    },
+    {
+      "id": "client_sme_decisions",
+      "name": "Client / SME Decisions",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Authoritative business decisions and rule clarifications.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "BA"
+      ]
+    },
+    {
+      "id": "client_content_owner_input",
+      "name": "Client Content-Owner Input",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Source content, taxonomy, editorial rules, and content ownership decisions.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "BA"
+      ]
+    },
+    {
+      "id": "client_vendor_information",
+      "name": "Client / Vendor Information",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Integration context, product behavior, constraints, and vendor contacts.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "BA"
+      ]
+    },
+    {
+      "id": "client_technical_requirements",
+      "name": "Client Technical / Compliance Requirements",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Security, compliance, accessibility, performance, hosting, and operational expectations.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "Architecture"
+      ]
+    },
+    {
+      "id": "client_system_content_inventory",
+      "name": "Client System / Content Inventories",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Source systems, repositories, records, files, and migration candidates.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "BA"
+      ]
+    },
+    {
+      "id": "client_approval",
+      "name": "Client Approval",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Formal approval of UX, creative, content, or scope as applicable.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "Account"
+      ]
+    },
+    {
+      "id": "vendor_api_documentation",
+      "name": "Client / Vendor API Documentation",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "API contracts, authentication details, schemas, limits, and sandbox documentation.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "Architecture"
+      ],
+      "earlyRequest": true
+    },
+    {
+      "id": "client_source_content",
+      "name": "Client Source Content",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Representative or final source content and data.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "BA"
+      ],
+      "earlyRequest": true
+    },
+    {
+      "id": "client_vendor_access",
+      "name": "Client / Vendor Access",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Credentials, accounts, network access, sandboxes, and permissions.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "TechOps"
+      ],
+      "earlyRequest": true
+    },
+    {
+      "id": "production_credentials",
+      "name": "Production Credentials / Vendor Settings",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Final production keys, IDs, secrets, domains, and environment-specific configuration.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "TechOps"
+      ],
+      "earlyRequest": true
+    },
+    {
+      "id": "approved_release_scope",
+      "name": "Approved Release Scope",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "The capabilities and fixes authorized for the release.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "PM"
+      ]
+    },
+    {
+      "id": "qa_approval",
+      "name": "QA Approval",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Evidence that agreed release criteria have been met or exceptions accepted.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "QA"
+      ]
+    },
+    {
+      "id": "client_launch_authorization",
+      "name": "Client Launch Authorization",
+      "type": "external-input",
+      "stage": "external",
+      "author": [],
+      "source": [],
+      "neededBy": [],
+      "dependsOn": [],
+      "description": "Client authorization to deploy the approved release.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required",
+      "owner": [
+        "Account"
+      ]
+    },
+    {
+      "id": "opportunity_scope_brief",
+      "name": "Opportunity / Scope Brief",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "Account",
+        "Strategy"
+      ],
+      "source": [
+        "Client"
+      ],
+      "neededBy": [
+        "BA"
+      ],
+      "dependsOn": [
+        "client_opportunity_context"
+      ],
+      "description": "Concise statement of the opportunity, expected product, broad scope, and known exclusions.",
+      "optional": false,
+      "informedBy": [
+        "business_strategy_brief"
+      ],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "business_problem_outcomes",
+      "name": "Business Problem / Desired Outcomes",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "Strategy"
+      ],
+      "source": [
+        "Client"
+      ],
+      "neededBy": [
+        "BA"
+      ],
+      "dependsOn": [
+        "business_strategy_brief",
+        "success_measures"
+      ],
+      "description": "The business problem being solved and the outcomes the project should create.",
+      "optional": false,
+      "informedBy": [
+        "client_stakeholder_input"
+      ],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "audience_journey_summary",
+      "name": "Audience & Journey Summary",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "Strategy",
+        "UX"
+      ],
+      "source": [
+        "Client"
+      ],
+      "neededBy": [
+        "BA"
+      ],
+      "dependsOn": [
+        "audience_priorities",
+        "experience_architecture"
+      ],
+      "description": "Primary audiences and the few journeys that matter most.",
+      "optional": false,
+      "informedBy": [
+        "research_evidence_summary",
+        "success_measures"
+      ],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "commercial_delivery_constraints",
+      "name": "Commercial & Delivery Constraints",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "Account",
+        "PM"
+      ],
+      "source": [
+        "Client"
+      ],
+      "neededBy": [
+        "BA"
+      ],
+      "dependsOn": [
+        "client_opportunity_context",
+        "client_budget_timeline",
+        "contractual_commitments"
+      ],
+      "description": "Budget, timeline, contractual commitments, major assumptions, and delivery constraints.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "stakeholder_decision_map",
+      "name": "Stakeholder & Decision Map",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "Account"
+      ],
+      "source": [
+        "Client"
+      ],
+      "neededBy": [
+        "BA"
+      ],
+      "dependsOn": [
+        "opportunity_scope_brief",
+        "client_stakeholder_information"
+      ],
+      "description": "Names the business owner, SMEs, approvers, and decision rights.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "current_state",
+      "name": "Current State",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "BA"
+      ],
+      "source": [
+        "Client"
+      ],
+      "neededBy": [
+        "BA"
+      ],
+      "dependsOn": [
+        "opportunity_scope_brief",
+        "stakeholder_decision_map",
+        "client_current_state_materials"
+      ],
+      "description": "A concise view of the current systems, content, workflows, pain points, and evidence.",
+      "optional": false,
+      "informedBy": [
+        "current_experience_assessment",
+        "research_evidence_summary"
+      ],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "initial_experience_direction",
+      "name": "Initial Experience Direction",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "UX"
+      ],
+      "source": [
+        "Strategy",
+        "Client"
+      ],
+      "neededBy": [
+        "BA"
+      ],
+      "dependsOn": [
+        "experience_architecture"
+      ],
+      "description": "Initial sitemap, page-type direction, primary flows, and known interaction-heavy areas.",
+      "optional": false,
+      "informedBy": [
+        "audience_journey_summary",
+        "success_measures"
+      ],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "prioritized_capability",
+      "name": "Prioritized Capability",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "PM"
+      ],
+      "source": [
+        "Client"
+      ],
+      "neededBy": [
+        "BA"
+      ],
+      "dependsOn": [
+        "project_definition_brief",
+        "major_capability_list",
+        "delivery_sequence_dependencies",
+        "client_priorities"
+      ],
+      "description": "The next capability selected for definition and delivery.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "ux_flow_wireframes",
+      "name": "UX Flow / Wireframes",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "UX"
+      ],
+      "source": [
+        "BA",
+        "Client"
+      ],
+      "neededBy": [
+        "BA"
+      ],
+      "dependsOn": [
+        "prioritized_capability",
+        "project_definition_brief",
+        "ux_definition",
+        "business_rules_decisions"
+      ],
+      "description": "A lightweight flow or wireframe showing content, interaction, and user movement through the capability.",
+      "optional": false,
+      "informedBy": [
+        "content_requirements"
+      ],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "desktop_mobile_creative",
+      "name": "Desktop & Mobile Creative",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "Creative"
+      ],
+      "source": [
+        "UX",
+        "BA"
+      ],
+      "neededBy": [
+        "BA"
+      ],
+      "dependsOn": [
+        "ux_definition",
+        "initial_design_system_direction",
+        "business_rules_decisions",
+        "content_requirements"
+      ],
+      "description": "Desktop and mobile visual treatment with sufficient states and variants for BA review.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "business_rules_decisions",
+      "name": "Business Rules & Decisions",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "BA"
+      ],
+      "source": [
+        "Client"
+      ],
+      "neededBy": [
+        "BA"
+      ],
+      "dependsOn": [
+        "prioritized_capability",
+        "stakeholder_decision_map",
+        "current_state",
+        "client_sme_decisions"
+      ],
+      "description": "Business rules, exceptions, and authoritative stakeholder decisions.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "content_requirements",
+      "name": "Content Requirements",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "BA",
+        "UX"
+      ],
+      "source": [
+        "Client Content Owner",
+        "SMEs"
+      ],
+      "neededBy": [
+        "BA"
+      ],
+      "dependsOn": [
+        "prioritized_capability",
+        "initial_content_type_list",
+        "business_rules_decisions",
+        "client_content_owner_input"
+      ],
+      "description": "Content required by the capability, including structure, constraints, relationships, and ownership.",
+      "optional": false,
+      "informedBy": [
+        "ux_flow_wireframes",
+        "ux_definition"
+      ],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "integration_context",
+      "name": "Integration Context",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "BA",
+        "Architecture"
+      ],
+      "source": [
+        "Client",
+        "Vendor"
+      ],
+      "neededBy": [
+        "BA"
+      ],
+      "dependsOn": [
+        "prioritized_capability",
+        "current_state",
+        "integration_migration_inventory",
+        "business_rules_decisions",
+        "client_vendor_information"
+      ],
+      "description": "What the integration does, systems involved, ownership, direction, and known constraints.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "project_definition_brief",
+      "name": "Project Definition Brief",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "BA"
+      ],
+      "source": [
+        "Upstream Project Inputs"
+      ],
+      "neededBy": [
+        "Dev",
+        "Architecture",
+        "QA"
+      ],
+      "dependsOn": [
+        "opportunity_scope_brief",
+        "business_problem_outcomes",
+        "audience_journey_summary",
+        "commercial_delivery_constraints",
+        "stakeholder_decision_map",
+        "current_state",
+        "initial_experience_direction",
+        "success_measures"
+      ],
+      "description": "Skinny definition of what is being built, why, for whom, boundaries, major capabilities, and open questions.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "major_capability_list",
+      "name": "Major Capability List",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "BA"
+      ],
+      "source": [
+        "Project Definition",
+        "UX"
+      ],
+      "neededBy": [
+        "Dev",
+        "Architecture",
+        "QA"
+      ],
+      "dependsOn": [
+        "project_definition_brief",
+        "experience_architecture",
+        "current_state"
+      ],
+      "description": "List of major functional capabilities without feature-level detail.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "initial_content_type_list",
+      "name": "Initial Content-Type List",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "BA",
+        "UX"
+      ],
+      "source": [
+        "Client Content Owner"
+      ],
+      "neededBy": [
+        "Dev",
+        "Architecture"
+      ],
+      "dependsOn": [
+        "project_definition_brief",
+        "major_capability_list",
+        "experience_architecture",
+        "current_state"
+      ],
+      "description": "Initial content types and key relationships; fields may remain incomplete.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "architecture_driving_requirements_nfrs",
+      "name": "Architecture-Driving Requirements / NFRs",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "BA",
+        "Architecture"
+      ],
+      "source": [
+        "Client"
+      ],
+      "neededBy": [
+        "Dev",
+        "Architecture",
+        "QA"
+      ],
+      "dependsOn": [
+        "project_definition_brief",
+        "major_capability_list",
+        "commercial_delivery_constraints",
+        "current_state",
+        "integration_migration_inventory",
+        "client_technical_requirements",
+        "success_measures"
+      ],
+      "description": "Only requirements that materially affect platform, architecture, effort, risk, or operations.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "solution_outline",
+      "name": "Solution Outline",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "Architecture"
+      ],
+      "source": [
+        "BA",
+        "Client",
+        "Technology"
+      ],
+      "neededBy": [
+        "Dev",
+        "TechOps",
+        "QA"
+      ],
+      "dependsOn": [
+        "project_definition_brief",
+        "major_capability_list",
+        "initial_content_type_list",
+        "architecture_driving_requirements_nfrs",
+        "integration_migration_inventory",
+        "commercial_delivery_constraints"
+      ],
+      "description": "Platform recommendation, high-level architecture, integration approach, environments, risks, and rationale.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "integration_migration_inventory",
+      "name": "Integration / Migration Inventory",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "BA",
+        "Architecture"
+      ],
+      "source": [
+        "Client"
+      ],
+      "neededBy": [
+        "Dev",
+        "Architecture",
+        "QA"
+      ],
+      "dependsOn": [
+        "project_definition_brief",
+        "current_state",
+        "major_capability_list",
+        "initial_content_type_list",
+        "client_system_content_inventory"
+      ],
+      "description": "Systems, integrations, source content, migration scope, direction, and ownership.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "delivery_sequence_dependencies",
+      "name": "Delivery Sequence & Dependencies",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "PM",
+        "BA",
+        "Architecture"
+      ],
+      "source": [
+        "Technology"
+      ],
+      "neededBy": [
+        "Dev",
+        "QA",
+        "PM"
+      ],
+      "dependsOn": [
+        "project_definition_brief",
+        "major_capability_list",
+        "solution_outline",
+        "integration_migration_inventory",
+        "commercial_delivery_constraints"
+      ],
+      "description": "High-level order of work and the dependencies that determine sequencing.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "initial_design_system_direction",
+      "name": "Initial Design-System Direction",
+      "type": "artifact",
+      "stage": "project-start",
+      "author": [
+        "Creative"
+      ],
+      "source": [
+        "Client Brand",
+        "UX"
+      ],
+      "neededBy": [
+        "Dev",
+        "BA"
+      ],
+      "dependsOn": [
+        "experience_architecture",
+        "client_brand_system"
+      ],
+      "description": "Initial typography, spacing, colors, grids, breakpoints, and shared component direction.",
+      "optional": false,
+      "informedBy": [
+        "audience_priorities",
+        "success_measures"
+      ],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "dev_ready_feature",
+      "name": "Dev-Ready Feature Definition / Story",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "BA"
+      ],
+      "source": [
+        "Feature Inputs"
+      ],
+      "neededBy": [
+        "Dev",
+        "QA"
+      ],
+      "dependsOn": [
+        "prioritized_capability",
+        "ux_flow_wireframes",
+        "business_rules_decisions",
+        "content_requirements",
+        "integration_context",
+        "approved_desktop_mobile_creative",
+        "resolved_blocking_decisions"
+      ],
+      "description": "Buildable, testable definition of the next slice with behavior, rules, dependencies, and acceptance criteria.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "approved_desktop_mobile_creative",
+      "name": "Approved Desktop & Mobile Creative",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "Creative"
+      ],
+      "source": [
+        "UX",
+        "BA",
+        "Client"
+      ],
+      "neededBy": [
+        "Dev",
+        "QA"
+      ],
+      "dependsOn": [
+        "ux_definition",
+        "initial_design_system_direction",
+        "business_rules_decisions",
+        "content_requirements",
+        "client_approval"
+      ],
+      "description": "Approved designs for the capability, including key responsive states.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "component_variants_responsive_rules",
+      "name": "Component Variants / Responsive Rules",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "Creative",
+        "UX"
+      ],
+      "source": [
+        "BA Requirements"
+      ],
+      "neededBy": [
+        "Dev",
+        "QA"
+      ],
+      "dependsOn": [
+        "approved_desktop_mobile_creative",
+        "ux_flow_wireframes",
+        "initial_design_system_direction",
+        "content_requirements"
+      ],
+      "description": "Explicit component variants, states, breakpoints, and responsive behavior.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "technical_content_model",
+      "name": "Technical Content Model",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "Architecture"
+      ],
+      "source": [
+        "BA",
+        "UX",
+        "Creative",
+        "Client Content Owner"
+      ],
+      "neededBy": [
+        "Dev",
+        "QA"
+      ],
+      "dependsOn": [
+        "dev_ready_feature",
+        "initial_content_type_list",
+        "business_rules_decisions",
+        "content_requirements",
+        "approved_desktop_mobile_creative",
+        "solution_outline"
+      ],
+      "description": "Technical content structures, fields, relationships, validation, taxonomy, and editorial behavior.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "api_integration_specs",
+      "name": "API / Integration Specs",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "Architecture"
+      ],
+      "source": [
+        "Client",
+        "Vendor"
+      ],
+      "neededBy": [
+        "Dev",
+        "QA",
+        "TechOps"
+      ],
+      "dependsOn": [
+        "integration_context",
+        "dev_ready_feature",
+        "business_rules_decisions",
+        "solution_outline",
+        "vendor_api_documentation"
+      ],
+      "description": "API contract, authentication, data mappings, errors, rate limits, and environment details.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "technical_notes",
+      "name": "Technical Notes",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "Architecture",
+        "Lead Dev"
+      ],
+      "source": [
+        "Technology"
+      ],
+      "neededBy": [
+        "Dev",
+        "QA"
+      ],
+      "dependsOn": [
+        "dev_ready_feature",
+        "solution_outline",
+        "technical_content_model",
+        "api_integration_specs",
+        "architecture_driving_requirements_nfrs"
+      ],
+      "description": "Only non-obvious implementation guidance not already captured elsewhere.",
+      "optional": true,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "conditional"
+    },
+    {
+      "id": "representative_content_test_data",
+      "name": "Representative Content / Test Data",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "Client Content Owner",
+        "BA"
+      ],
+      "source": [
+        "Client"
+      ],
+      "neededBy": [
+        "Dev",
+        "QA"
+      ],
+      "dependsOn": [
+        "content_requirements",
+        "technical_content_model",
+        "business_rules_decisions",
+        "client_source_content"
+      ],
+      "description": "Realistic examples and edge cases sufficient to build and test the capability.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "access_environments",
+      "name": "Access & Environments",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "TechOps"
+      ],
+      "source": [
+        "Client",
+        "Vendor"
+      ],
+      "neededBy": [
+        "Dev",
+        "QA"
+      ],
+      "dependsOn": [
+        "solution_outline",
+        "integration_migration_inventory",
+        "api_integration_specs",
+        "delivery_sequence_dependencies",
+        "client_vendor_access"
+      ],
+      "description": "Repository, environment, CMS, vendor, secret, and deployment access required for the slice.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "resolved_blocking_decisions",
+      "name": "Resolved Blocking Decisions",
+      "type": "artifact",
+      "stage": "feature-level",
+      "author": [
+        "BA"
+      ],
+      "source": [
+        "Client",
+        "Technology"
+      ],
+      "neededBy": [
+        "Dev",
+        "QA"
+      ],
+      "dependsOn": [
+        "stakeholder_decision_map",
+        "prioritized_capability",
+        "ux_flow_wireframes",
+        "desktop_mobile_creative",
+        "integration_context",
+        "business_rules_decisions"
+      ],
+      "description": "Recorded resolution of questions that would otherwise force implementation by guesswork.",
+      "optional": false,
+      "informedBy": [
+        "technical_content_model",
+        "api_integration_specs"
+      ],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "final_content_migration_data",
+      "name": "Final Content & Migration Data",
+      "type": "artifact",
+      "stage": "release",
+      "author": [
+        "BA",
+        "Client Content Owner",
+        "Architecture"
+      ],
+      "source": [
+        "Client"
+      ],
+      "neededBy": [
+        "Dev",
+        "QA",
+        "TechOps"
+      ],
+      "dependsOn": [
+        "integration_migration_inventory",
+        "technical_content_model",
+        "content_requirements",
+        "representative_content_test_data",
+        "resolved_blocking_decisions",
+        "client_approval"
+      ],
+      "description": "Approved source content, mappings, redirects, exclusions, media, and record counts.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "production_configuration",
+      "name": "Production Configuration",
+      "type": "artifact",
+      "stage": "release",
+      "author": [
+        "TechOps",
+        "Architecture"
+      ],
+      "source": [
+        "Client",
+        "Vendor"
+      ],
+      "neededBy": [
+        "Dev",
+        "QA",
+        "TechOps"
+      ],
+      "dependsOn": [
+        "solution_outline",
+        "architecture_driving_requirements_nfrs",
+        "api_integration_specs",
+        "access_environments",
+        "production_credentials"
+      ],
+      "description": "Production domains, keys, IDs, secrets, CDN, caching, analytics, monitoring, and platform configuration.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "launch_plan",
+      "name": "Launch Plan",
+      "type": "artifact",
+      "stage": "release",
+      "author": [
+        "PM",
+        "TechOps",
+        "Architecture"
+      ],
+      "source": [
+        "Client",
+        "Technology"
+      ],
+      "neededBy": [
+        "Dev",
+        "QA",
+        "TechOps"
+      ],
+      "dependsOn": [
+        "delivery_sequence_dependencies",
+        "final_content_migration_data",
+        "production_configuration",
+        "approved_release_scope",
+        "qa_approval",
+        "client_launch_authorization"
+      ],
+      "description": "Launch timing, freeze, deployment, validation, rollback, communication, and support ownership.",
+      "optional": false,
+      "informedBy": [],
+      "evidenceLinks": [],
+      "requirement": "required"
+    },
+    {
+      "id": "client_opportunity_context",
+      "name": "Client / Opportunity Context",
+      "type": "artifact",
+      "stage": "upstream-definition",
+      "author": [
+        "Account",
+        "Client"
+      ],
+      "source": [
+        "Client",
+        "Existing Relationship",
+        "Proposal Context"
+      ],
+      "neededBy": [
+        "Strategy",
+        "Account",
+        "BA"
+      ],
+      "dependsOn": [
+        "client_request",
+        "contractual_commitments"
+      ],
+      "informedBy": [],
+      "description": "Concise context for why the opportunity exists, what prompted it, and what is already known or committed.",
+      "optional": false,
+      "requirement": "required",
+      "evidenceLinks": []
+    },
+    {
+      "id": "business_strategy_brief",
+      "name": "Business Strategy Brief",
+      "type": "artifact",
+      "stage": "upstream-definition",
+      "author": [
+        "Strategy"
+      ],
+      "source": [
+        "Client",
+        "Account",
+        "Business Plans"
+      ],
+      "neededBy": [
+        "Strategy",
+        "CX",
+        "UX",
+        "BA"
+      ],
+      "dependsOn": [
+        "client_opportunity_context",
+        "client_stakeholder_input"
+      ],
+      "informedBy": [
+        "client_current_state_materials"
+      ],
+      "description": "The business context, strategic priorities, market or organizational pressures, and intended role of the experience.",
+      "optional": false,
+      "requirement": "required",
+      "evidenceLinks": []
+    },
+    {
+      "id": "success_measures",
+      "name": "Success Measures",
+      "type": "artifact",
+      "stage": "upstream-definition",
+      "author": [
+        "Strategy",
+        "Client"
+      ],
+      "source": [
+        "Client",
+        "Analytics",
+        "Business Plans"
+      ],
+      "neededBy": [
+        "Strategy",
+        "UX",
+        "BA",
+        "QA"
+      ],
+      "dependsOn": [
+        "business_strategy_brief",
+        "current_research_analytics"
+      ],
+      "informedBy": [],
+      "description": "A small set of measurable outcomes or observable indicators that define success.",
+      "optional": false,
+      "requirement": "required",
+      "evidenceLinks": []
+    },
+    {
+      "id": "research_evidence_summary",
+      "name": "Research & Evidence Summary",
+      "type": "artifact",
+      "stage": "upstream-definition",
+      "author": [
+        "CX",
+        "UX"
+      ],
+      "source": [
+        "Analytics",
+        "Interviews",
+        "Surveys",
+        "Usability Findings",
+        "Current Experience"
+      ],
+      "neededBy": [
+        "Strategy",
+        "CX",
+        "UX",
+        "BA"
+      ],
+      "dependsOn": [
+        "current_research_analytics",
+        "client_current_state_materials"
+      ],
+      "informedBy": [
+        "business_strategy_brief"
+      ],
+      "description": "The few findings and evidence points that materially affect audience, journey, content, or experience decisions.",
+      "optional": false,
+      "requirement": "conditional",
+      "evidenceLinks": []
+    },
+    {
+      "id": "current_experience_assessment",
+      "name": "Current Experience Assessment",
+      "type": "artifact",
+      "stage": "upstream-definition",
+      "author": [
+        "CX",
+        "UX"
+      ],
+      "source": [
+        "Current Website",
+        "Current System",
+        "Content",
+        "Analytics"
+      ],
+      "neededBy": [
+        "CX",
+        "UX",
+        "BA",
+        "Strategy"
+      ],
+      "dependsOn": [
+        "research_evidence_summary",
+        "client_current_state_materials"
+      ],
+      "informedBy": [],
+      "description": "Skinny assessment of the current experience, its major friction points, strengths, and structural constraints.",
+      "optional": false,
+      "requirement": "conditional",
+      "evidenceLinks": []
+    },
+    {
+      "id": "audience_priorities",
+      "name": "Audience Priorities",
+      "type": "artifact",
+      "stage": "upstream-definition",
+      "author": [
+        "Strategy",
+        "CX"
+      ],
+      "source": [
+        "Client",
+        "Research",
+        "Business Strategy"
+      ],
+      "neededBy": [
+        "Strategy",
+        "CX",
+        "UX",
+        "BA"
+      ],
+      "dependsOn": [
+        "business_strategy_brief",
+        "research_evidence_summary"
+      ],
+      "informedBy": [
+        "success_measures"
+      ],
+      "description": "Identifies which audiences matter most and why, without requiring heavyweight personas.",
+      "optional": false,
+      "requirement": "required",
+      "evidenceLinks": []
+    },
+    {
+      "id": "experience_architecture",
+      "name": "Experience Architecture",
+      "type": "artifact",
+      "stage": "upstream-definition",
+      "author": [
+        "UX"
+      ],
+      "source": [
+        "Audience Priorities",
+        "Current Experience",
+        "Business Goals"
+      ],
+      "neededBy": [
+        "UX",
+        "Creative",
+        "BA",
+        "Architecture"
+      ],
+      "dependsOn": [
+        "audience_priorities",
+        "current_experience_assessment",
+        "business_problem_outcomes"
+      ],
+      "informedBy": [
+        "success_measures",
+        "research_evidence_summary"
+      ],
+      "description": "The structural experience model: sitemap, major page or screen types, navigation, and priority journeys.",
+      "optional": false,
+      "requirement": "required",
+      "evidenceLinks": []
+    },
+    {
+      "id": "ux_definition",
+      "name": "UX Definition",
+      "type": "artifact",
+      "stage": "upstream-definition",
+      "author": [
+        "UX"
+      ],
+      "source": [
+        "Experience Architecture",
+        "Business Rules",
+        "Content Needs"
+      ],
+      "neededBy": [
+        "Creative",
+        "BA",
+        "Development"
+      ],
+      "dependsOn": [
+        "experience_architecture",
+        "business_rules_decisions"
+      ],
+      "informedBy": [
+        "content_requirements"
+      ],
+      "description": "Capability-level UX definition that explains intended flow, interaction, content needs, and states before visual design.",
+      "optional": false,
+      "requirement": "required",
+      "evidenceLinks": []
+    }
+  ],
+  "relationshipTypes": {
+    "dependsOn": "Hard prerequisite: must exist before the artifact can be completed.",
+    "informedBy": "Iterative or advisory relationship: influences the artifact but is not a strict sequencing dependency."
+  }
+}

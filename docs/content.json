@@ -1,0 +1,430 @@
+{
+  "project_definition_brief": {
+    "tldr": "The single page everyone points at when someone asks 'what are we actually building?'. Skinny on purpose — it names the thing, the why, the boundaries, and the open questions, and stops there.",
+    "good": [
+      "Fits on 1–2 pages; if it's longer, detail is leaking in from downstream artifacts",
+      "Every major capability traces to a stated business outcome",
+      "Exclusions are as explicit as inclusions — 'not doing X' is written down",
+      "Open questions are listed with an owner, not hidden"
+    ],
+    "template": {
+      "type": "outline",
+      "sections": [
+        ["Purpose & business problem", "2–3 sentences: the problem and the outcome the client is buying"],
+        ["Audiences", "The 2–4 audiences that matter, one line each"],
+        ["In scope / Out of scope", "Two bullet lists; be blunt in the second one"],
+        ["Major capabilities", "Names only — the Major Capability List carries the detail"],
+        ["Constraints & assumptions", "Budget, timeline, platform, contractual promises"],
+        ["Open questions", "Question · owner · needed-by date"]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "sections": [
+          ["Purpose & business problem", "Meridian's nine-year-old site buries rates and branch information three clicks deep; members call branches for information the site should answer. Replace it with a site that makes rates, locations, and appointment booking self-service — measured by booking volume and a 30% reduction in informational calls."],
+          ["Audiences", "Prospective members comparing rates · Current members finding branches, hours, and booking appointments · Small-business owners exploring commercial accounts"],
+          ["In scope / Out of scope", "In: marketing site, live rate display, branch & ATM locator, appointment booking, financial education blog. Out: online banking itself (vendor-hosted, link out), Spanish-language site (phase 2), member chat."],
+          ["Major capabilities", "Rates display · Branch & ATM locator · Appointment booking · Product pages · Financial education blog"],
+          ["Constraints & assumptions", "$250k budget · launch before fiscal year end (Oct 31) · must run in Meridian's existing Azure tenancy · all rate and product copy passes compliance review · assumes Fiserv rate feed access granted by IT"],
+          ["Open questions", "Who owns the rate data feed and its format spec? — D. Alvarez (IT) — Aug 1 · Does the booking vendor support SSO? — vendor CSM via J. Park — Aug 15"]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "sections": [
+          ["Purpose & business problem", "After the three-hospital merger, patients face three inconsistent websites and cannot find doctors across the network. Build one unified site whose core job is connecting patients to the right provider and location — measured by find-a-doctor completion rate."],
+          ["Audiences", "Patients and caregivers finding care · Referring physicians checking specialties and privileges · Job seekers (nursing shortage is a board-level priority)"],
+          ["In scope / Out of scope", "In: provider directory, location finder, service-line pages, careers landing, news. Out: patient portal (links to Epic MyChart), bill pay, appointment self-scheduling (phase 2, pending MyChart mapping)."],
+          ["Major capabilities", "Provider directory · Location finder · Service lines · Careers section · News & press"],
+          ["Constraints & assumptions", "No PHI may enter the CMS, forms, or analytics (HIPAA) · brand refresh lands mid-project — theming must absorb it · 9-month window tied to merger announcement · assumes nightly access to the MD-Staff credentialing feed"],
+          ["Open questions", "Which system is the single source of truth for provider data? — IT + Medical Staff Office — sprint 1 · Careers: Workday feed integration or link out? — HR IT — sprint 2"]
+        ]
+      }
+    ],
+    "dorExtra": ["A named client counterpart has agreed to review it"],
+    "dod": [
+      "Reviewed by Account, Strategy, and a Technology lead",
+      "Client has seen it and not objected to the boundaries",
+      "Every capability maps to an outcome; every exclusion is deliberate",
+      "Each open question has an owner and a needed-by date"
+    ]
+  },
+  "major_capability_list": {
+    "tldr": "The name-level list of what the product does — the backbone for estimating, sequencing, and prioritizing. Capabilities, not features: 'Site search', not 'search filters with typeahead'.",
+    "good": [
+      "Roughly 8–20 items; more usually means feature detail crept in",
+      "Each capability serves a named outcome from the Definition Brief",
+      "No 'misc' bucket — if it doesn't earn a name, it isn't in scope",
+      "Stable: churn here after sign-off means the definition was wrong"
+    ],
+    "template": {
+      "type": "table",
+      "columns": ["Capability", "Outcome it serves", "Priority", "Notes / exclusions"],
+      "rows": [
+        ["Site search", "Visitors find content fast", "High", "Excludes federated search of vendor portal"],
+        ["Blog publishing", "Thought-leadership pipeline", "Medium", "Migration of legacy posts tracked separately"]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          ["Rates display", "Members compare products without calling", "High", "Auto-fed from core banking; 15-minute freshness; audit trail required"],
+          ["Branch & ATM locator", "Members find nearest service point", "High", "Includes shared-network ATMs (~90), not just Meridian's 22 branches"],
+          ["Appointment booking", "Drive branch visits for high-value products", "High", "Vendor: Coconut Software, embedded"],
+          ["Product pages", "Loan and deposit conversion", "Medium", "12 products on a shared template with disclosure blocks"],
+          ["Financial education blog", "SEO and member trust", "Low", "Migrate top 50 legacy posts only; rest retired"]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          ["Provider directory", "Patients find the right doctor across the merged network", "High", "~2,400 providers; search by specialty, insurance, location"],
+          ["Location finder", "Patients reach the right facility", "High", "38 locations; urgent-care wait times phase 2"],
+          ["Service lines", "Patients discover what care is offered", "Medium", "~60 services, physician-reviewed copy"],
+          ["Careers section", "Feed the recruiting pipeline", "Medium", "Job data from Workday; apply flow stays in Workday"],
+          ["News & press", "Merger communications", "Low", "New content only; no legacy news migration"]
+        ]
+      }
+    ],
+    "dorExtra": [],
+    "dod": [
+      "Client has reviewed the list and priorities",
+      "Every row names an outcome; none contain feature-level detail",
+      "Exclusions worth stating are stated",
+      "Architecture confirms nothing on the list is a silent platform-breaker"
+    ]
+  },
+  "initial_content_type_list": {
+    "tldr": "The first cut of the content model: the types of content the experience needs and how they relate. Types and relationships — fields come later in the Technical Content Model.",
+    "good": [
+      "Types, not fields — 'Article has an Author' yes, 'Article has a 60-char title' no",
+      "Every page type in the experience direction is backed by a type here",
+      "Rough counts per type so migration effort is visible early",
+      "Unknowns are marked, not guessed"
+    ],
+    "template": {
+      "type": "table",
+      "columns": ["Content type", "Purpose", "Key relationships", "Approx count", "Source / owner"],
+      "rows": [
+        ["Article", "News & insights pages", "has Author, tagged with Topic", "~400", "Legacy CMS · Marketing"],
+        ["Person", "Bios, authorship", "authors Articles", "~60", "HR spreadsheet · Client HR"]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          ["Product", "Loan & deposit product pages", "has Rate table, has Disclosures, belongs to Category", "12", "Marketing + core banking feed"],
+          ["Rate", "Live rate values with effective timestamps", "belongs to Product", "~40 rows, refreshed", "Fiserv feed · IT"],
+          ["Branch", "Locator entries with hours and services", "offers Services, has Hours", "22", "Facilities spreadsheet · Ops"],
+          ["ATM", "Locator entries", "belongs to Network", "~90", "Shared-network feed"],
+          ["Article", "Financial education blog", "has Author, tagged with Topic", "50 migrated", "Legacy WordPress · Marketing"],
+          ["Disclosure", "Compliance text blocks", "attached to Products", "~30", "Compliance team — sole editors"]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          ["Provider", "Directory profiles", "practices at Location, has Specialty, accepts Insurance plans", "~2,400", "MD-Staff credentialing, nightly sync — not hand-edited"],
+          ["Location", "Finder entries and facility pages", "has Departments, offers Services", "38", "Facilities · real estate office"],
+          ["Service", "Service-line pages", "offered at Locations, related Providers", "~60", "Service-line directors"],
+          ["Specialty", "Directory search facet", "groups Providers", "~40 patient-facing terms", "Mapping from 210 MD-Staff codes — owner TBD (flagged)"],
+          ["Insurance plan", "Directory filter facet", "accepted by Providers", "~45", "Managed care office"],
+          ["Story", "News & press", "has Author", "new only", "Communications"]
+        ]
+      }
+    ],
+    "dorExtra": [],
+    "dod": [
+      "Covers every page type in the Initial Experience Direction",
+      "Relationships sketched for each type",
+      "Each type has a source system and a content owner named",
+      "Counts present, even if rough"
+    ]
+  },
+  "integration_migration_inventory": {
+    "tldr": "The ledger of every system we touch: what integrates, what migrates, what gets retired, what we deliberately ignore. Its job is to make sure nothing surprises the team in week nine.",
+    "good": [
+      "Every system from Current State is dispositioned — integrate, migrate, retire, or ignore",
+      "Direction is explicit (read, write, both) for each integration",
+      "A human contact is named per system, not just a vendor",
+      "Risk and unknowns are flagged per row"
+    ],
+    "template": {
+      "type": "table",
+      "columns": ["System", "Disposition", "Direction", "Data / content involved", "Owner / contact", "Risk"],
+      "rows": [
+        ["Salesforce", "Integrate", "Read + write", "Leads from contact forms", "J. Ortiz (client RevOps)", "Sandbox access pending"],
+        ["Legacy CMS", "Migrate then retire", "One-time export", "~400 articles, media library", "M. Chen (client IT)", "Export format unverified"]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          ["Fiserv core banking", "Integrate", "Read only", "Rate values, effective dates", "D. Alvarez (IT)", "Feed is a legacy fixed-width file; format spec unconfirmed"],
+          ["Coconut Software (booking)", "Integrate", "Embed + API", "Appointment types, availability", "Vendor CSM via J. Park", "SSO support unconfirmed — spike scheduled"],
+          ["Legacy WordPress", "Migrate then retire", "One-time export", "Top 50 articles + media", "Marketing", "Image licensing for old posts unknown"],
+          ["Salesforce Marketing Cloud", "Integrate", "Write", "Newsletter signups", "RevOps", "Low"],
+          ["Old locator plugin", "Retire", "—", "Branch data re-sourced from facilities", "—", "None — data exists in spreadsheet"]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          ["MD-Staff (credentialing)", "Integrate", "Read, nightly", "Provider records, specialties, privileges", "Medical Staff Office", "Data quality: ~30% missing photos, stale 'accepting patients' flags"],
+          ["Epic MyChart", "Link out only", "None", "No data exchange — PHI boundary", "IT compliance", "Any inbound callback would trigger HIPAA scope"],
+          ["Workday", "Integrate", "Read feed", "Open positions for careers pages", "HR IT", "Feed API rate limits; 6-hour cache planned"],
+          ["Three legacy CMSes", "Migrate then retire", "One-time", "~5,000 pages triaged to ~800 keepers", "Comms lead per hospital", "Page ownership disputes between merged hospitals"],
+          ["Google Business Profiles", "Integrate", "Write", "Location hours, holiday changes", "Marketing", "API quota; batch updates"]
+        ]
+      }
+    ],
+    "dorExtra": [],
+    "dod": [
+      "Every current-state system appears with a disposition",
+      "Each integration row has direction, data, and a named contact",
+      "Migration rows have rough volumes",
+      "Risks and unverified assumptions are flagged, not omitted"
+    ]
+  },
+  "architecture_driving_requirements_nfrs": {
+    "tldr": "Only the requirements that change what we build or how much it costs — security, compliance, performance, hosting, operations. If it doesn't drive architecture, effort, or risk, it doesn't belong here.",
+    "good": [
+      "Short — a dozen items that matter beats fifty boilerplate rows",
+      "Each requirement is testable ('pages under 2s on 4G'), not aspirational ('fast')",
+      "Each names its source — contract, client policy, law, or explicit assumption",
+      "Each says how it will be verified"
+    ],
+    "template": {
+      "type": "table",
+      "columns": ["Requirement", "Category", "Why it drives architecture", "Source", "How verified"],
+      "rows": [
+        ["WCAG 2.2 AA conformance", "Accessibility / compliance", "Constrains component library and creative", "Contract §4.2", "Automated scan + manual audit per release"],
+        ["Content editable without deploys", "Operations", "Pushes logic into CMS config, not code", "Client CMS team", "Editor walkthrough at UAT"]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          ["Every displayed rate traceable to a core-banking value with timestamp", "Compliance", "Forces an ingestion pipeline with an audit log, not manual entry", "NCUA audit finding, 2025", "Audit-log review at UAT; spot checks quarterly"],
+          ["No member data stored in CMS or site database", "Security", "Booking must be a vendor-hosted embed; forms are stateless", "InfoSec policy IS-7", "Pen test + data-flow review"],
+          ["Rate pages survive Fed-announcement traffic (10x baseline)", "Performance", "Static rendering with cache invalidation on feed update", "Analytics from last rate cycle", "Load test at 10x with feed-triggered purge"],
+          ["Runs in Meridian's existing Azure tenancy", "Hosting", "Constrains platform shortlist and CI/CD design", "IT standard", "Deployment review with IT"],
+          ["WCAG 2.2 AA", "Compliance", "Constrains component library and creative", "Legal settlement, 2024", "Automated scan + manual audit per release"]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          ["No PHI in CMS, forms, or analytics", "Compliance / HIPAA", "All clinical intake routes to MyChart; analytics config restricted", "Compliance office", "Quarterly scan + form inventory audit"],
+          ["Provider data syncs nightly; never hand-edited in CMS", "Operations", "Integration-first content model; publish-blocking validation", "Medical Staff Office", "Sync monitoring dashboard at UAT"],
+          ["Directory search under 1s across 2,400 providers", "Performance", "Dedicated search index, not CMS queries", "UX benchmark", "Load test with production data volume"],
+          ["Three hospital brands themed from one codebase", "Operations", "Design-token architecture; brand refresh must be absorbable", "Merger mandate", "Theme-switch demo mid-project"],
+          ["ER and urgent-care info reachable at 99.9%", "Operations", "CDN with static fallback for critical pages", "Patient safety review", "Failover drill before launch"]
+        ]
+      }
+    ],
+    "dorExtra": [],
+    "dod": [
+      "Every row materially affects platform, architecture, effort, or risk — pruned otherwise",
+      "Reviewed by Architecture and acknowledged by the client",
+      "Each requirement is testable and has a verification approach",
+      "Conflicts with budget/timeline are surfaced, not deferred"
+    ]
+  },
+  "solution_outline": {
+    "tldr": "The platform recommendation and high-level architecture, with the reasoning attached. It answers 'what are we building on, and why should we trust that choice?' before feature work commits us.",
+    "good": [
+      "The recommendation is a decision, not a menu",
+      "Every architecture-driving requirement is addressed or explicitly flagged",
+      "One diagram a client can follow: systems, integrations, hosting",
+      "Rejected alternatives get one honest line each — it shows the choice was real"
+    ],
+    "template": {
+      "type": "outline",
+      "sections": [
+        ["Platform recommendation & rationale", "The pick, and the two or three reasons that decided it"],
+        ["High-level architecture", "One diagram: systems, integrations, hosting, environments"],
+        ["Integration approach", "Per system from the inventory: pattern, direction, auth"],
+        ["Environments & hosting", "Dev / stage / prod, CDN, domains"],
+        ["Risks & mitigations", "The 3–5 things most likely to hurt, each with a plan"],
+        ["Alternatives considered", "One line each on what was rejected and why"]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "sections": [
+          ["Platform recommendation & rationale", "Sanity CMS + Next.js, hosted on Azure Static Web Apps. Decided by: structured content with approval workflow fits the compliance-reviewed disclosure model; static rendering with on-demand revalidation absorbs rate-day spikes; runs inside the mandated Azure tenancy."],
+          ["High-level architecture", "Next.js frontend (static + ISR) · Sanity content lake · Azure Function ingests the Fiserv fixed-width rate file every 15 minutes, writes Rate documents with an audit log, and triggers page revalidation · Coconut booking as a vendor-hosted embed."],
+          ["Integration approach", "Fiserv: read-only file pickup over SFTP, contract-tested parser, audit log per value. Coconut: embed now; SSO decision follows the sprint-1 spike. Salesforce Marketing Cloud: server-side API for newsletter signup — no client-side member data."],
+          ["Environments & hosting", "Dev / stage / prod as SWA environments; separate Sanity dataset for content staging; compliance reviews on stage before publish."],
+          ["Risks & mitigations", "Rate file format drift → contract test + alert, rates auto-hide if stale over 60 min. SSO unknown → spike before booking UX commits. Compliance review latency → Disclosure content type with explicit approval state, reviewed in batches."],
+          ["Alternatives considered", "Sitecore: capability fit but 3x license cost and no client team to run it. WordPress VIP: weak structured-content story for the rate audit trail."]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "sections": [
+          ["Platform recommendation & rationale", "Drupal 11, single codebase serving all three hospital brands via design tokens, with Typesense powering provider search. Decided by: editor autonomy for three comms teams, mature multisite theming, and a migration pipeline that can validate provider data on ingest."],
+          ["High-level architecture", "Drupal on Acquia Cloud · Typesense search cluster for the directory · nightly MD-Staff SFTP drop → migrate pipeline with publish-blocking validation and an exception report · Workday job feed cached 6 hours · MyChart is link-out only."],
+          ["Integration approach", "MD-Staff: nightly batch, no manual overrides, data-quality dashboard for the Medical Staff Office. MyChart: outbound links only — no callbacks, keeping the site out of HIPAA scope. Workday: read-only feed. Google Business Profiles: batched hour updates."],
+          ["Environments & hosting", "Dev / stage / prod on Acquia; content-freeze workflow for merger announcement windows; CDN with static fallback for ER/urgent-care pages."],
+          ["Risks & mitigations", "Provider data quality → validation blocks publish, exceptions routed weekly. Migration ownership disputes → triage board with per-hospital comms leads; default disposition is retire. Mid-project brand refresh → all theming through tokens, one re-skin sprint budgeted."],
+          ["Alternatives considered", "Three separate sites: triples run cost and defeats the merger's point. Headless React front end: search performance fine, but three comms teams lose page-building autonomy."]
+        ]
+      }
+    ],
+    "dorExtra": [],
+    "dod": [
+      "Platform decision is explicit and client-approved",
+      "Every NFR is addressed in the design or flagged as open",
+      "Each inventoried integration has an approach",
+      "Reviewed with Dev and TechOps — the people who will live with it"
+    ]
+  },
+  "delivery_sequence_dependencies": {
+    "tldr": "The order of work and the reasons for it. Not a Gantt chart — a dependency-honest sequence that shows what blocks what, so nobody starts something that can't finish.",
+    "good": [
+      "Every major capability appears exactly once in the sequence",
+      "Hard dependencies are distinguished from mere preferences",
+      "Long-lead items — access, credentials, vendor docs — surface at the top, not when they bite",
+      "The 'why this order' column survives contact with a skeptical PM"
+    ],
+    "template": {
+      "type": "table",
+      "columns": ["Order", "Work item", "Depends on", "Why this order", "Blocked without it"],
+      "rows": [
+        ["1", "Design system foundations", "Approved creative direction", "Everything visual builds on it", "All feature UI work"],
+        ["2", "Content model + migration dry run", "Content-type list, CMS access", "Migration risk retired early", "Feature content work"]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          ["1", "Azure environments + CI/CD", "IT tenancy access (requested — long lead)", "Everything deploys through it", "All development"],
+          ["2", "Design system foundations", "Approved creative direction", "All feature UI builds on tokens and components", "Every feature's UI"],
+          ["3", "Rate feed pipeline + Product/Rates pages", "Fiserv file spec and sample files", "Highest-risk integration retired early; compliance audit trail proven", "Product pages, launch"],
+          ["4", "Branch & ATM locator", "Cleaned facilities data", "Independent of rates — runs as a parallel track", "Nothing downstream"],
+          ["5", "Appointment booking", "SSO spike result (sprint 1)", "Vendor decision gates the booking UX", "Booking UX only"],
+          ["6", "Blog migration (top 50)", "Marketing's keep-list", "Content work parallel to dev; needed for launch SEO", "Launch content"],
+          ["7", "Launch hardening", "All above", "Load test against rate-day traffic profile", "Go-live"]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          ["1", "Provider data pipeline + validation dashboard", "MD-Staff SFTP access (requested day one)", "Worst data risk first; findings shape the content model", "Directory and everything that links to it"],
+          ["2", "Design tokens + component library", "Brand refresh direction", "Token isolation is what makes the mid-project rebrand absorbable", "All feature UI"],
+          ["3", "Provider directory + search", "Pipeline (1), Typesense environment", "Flagship capability; everything else links into it", "Service lines, locations cross-links"],
+          ["4", "Location finder", "Facilities data", "Parallel to directory", "Service-line pages"],
+          ["5", "Service-line pages", "Directory and locations live (they link to both)", "Content relationships need targets to point at", "Nothing downstream"],
+          ["6", "Page migration (~800 keepers)", "Triage-board decisions per hospital", "Spread across sprints; disputes escalate early", "Launch"],
+          ["7", "Careers + news", "Workday feed credentials", "Low risk, late slot", "Nothing downstream"],
+          ["8", "Launch", "Content freeze, failover drill", "Tied to merger announcement date", "Go-live"]
+        ]
+      }
+    ],
+    "dorExtra": [],
+    "dod": [
+      "All capabilities sequenced; no orphans",
+      "Hard vs soft dependencies distinguished",
+      "Long-lead external requests (access, vendor, credentials) initiated",
+      "PM and Architecture both agree the order is buildable"
+    ]
+  },
+  "prioritized_capability": {
+    "tldr": "The decision record that starts feature work: which capability is next, and why. One capability, small enough to define, build, and validate as a slice.",
+    "good": [
+      "Names exactly one capability — 'next three' means the decision wasn't made",
+      "The 'why now' is the client's priority, not the team's convenience",
+      "The slice boundary is stated: what this pass includes and defers",
+      "Known unknowns are listed so definition work starts eyes-open"
+    ],
+    "template": {
+      "type": "outline",
+      "sections": [
+        ["Selected capability", "Name, from the Major Capability List"],
+        ["Why now", "The client priority or dependency that puts it first"],
+        ["Slice boundary", "What this pass includes; what it explicitly defers"],
+        ["Known unknowns", "Questions definition work must answer"]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "sections": [
+          ["Selected capability", "Rates display — product pages with live rates."],
+          ["Why now", "The NCUA audit finding makes rate accuracy the contractual driver; it carries the highest technical risk (legacy fixed-width feed); and marketing's fall loan campaign needs rate pages live first."],
+          ["Slice boundary", "Includes: feed pipeline, product page template, disclosure blocks, three pilot products (auto loan, 12-month CD, free checking). Defers: the remaining nine products, rate-history charts, product comparison tool."],
+          ["Known unknowns", "Is the fixed-width spec we have current? · What is the intraday correction process when a rate is published wrong? · What is compliance's turnaround for disclosure copy?"]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "sections": [
+          ["Selected capability", "Provider directory — the search slice."],
+          ["Why now", "It is the #1 patient task (62% of searches on the legacy sites), the nightly data pipeline it needs was sprint 1's deliverable, and every other capability links into it."],
+          ["Slice boundary", "Includes: search by name, specialty, and location with an insurance filter; provider profile pages; all 2,400 records. Defers: online scheduling links (needs MyChart mapping), ratings and reviews, the 'accepting new patients' flag (source data only 60% trustworthy)."],
+          ["Known unknowns", "Photo coverage is ~70% — what is the remediation plan? · Who owns mapping MD-Staff's 210 specialty codes to the ~40 patient-facing terms?"]
+        ]
+      }
+    ],
+    "dorExtra": ["Current client priorities are confirmed, not assumed"],
+    "dod": [
+      "One capability named and client priority confirmed",
+      "Slice is small enough to define and deliver in one cycle",
+      "Deferred scope is written down, not implied",
+      "BA, UX, and the lead dev know it's next"
+    ]
+  },
+  "business_rules_decisions": {
+    "tldr": "The authoritative record of how the business logic actually works — rules, exceptions, and who decided. Its purpose is to make guesswork impossible: if it's not here, it's an open question, not a default.",
+    "good": [
+      "Every rule names its decider and date — 'the client said' is not a source",
+      "Exceptions are captured with the rule, not discovered in QA",
+      "Open questions are visibly open and routed for resolution",
+      "Written so a developer can implement without interpreting"
+    ],
+    "template": {
+      "type": "table",
+      "columns": ["Rule / decision", "Details", "Exceptions", "Decided by", "Date", "Status"],
+      "rows": [
+        ["Members see pricing; guests do not", "Price fields render only for authenticated members", "Trade-show demo accounts see all pricing", "L. Park (VP Sales)", "2026-06-30", "Decided"],
+        ["Article embargo timing", "Publish at 06:00 client-local", "—", "—", "—", "Open — with SME"]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          ["Rates always display with effective timestamp", "Every rate renders with 'as of' time and a disclosure link", "None", "R. Whitfield (Chief Compliance Officer)", "2026-06-12", "Decided"],
+          ["APY display precision", "Two decimals, round half-even, per NCUA guidance", "Promo rates may show an 'as low as' range with disclosure", "R. Whitfield (CCO)", "2026-06-12", "Decided"],
+          ["Stale-feed behavior", "If the feed is older than 60 minutes, hide rates and show a call-us CTA — never show a stale number", "None", "J. Park (VP Digital)", "2026-06-20", "Decided"],
+          ["Bookable appointment types", "Four types bookable online (new account, loan consult, notary, general)", "Mortgage consultations require a pre-screen call first", "Branch Operations", "—", "Open — with SME"]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          ["Directory listing eligibility", "A provider appears only if actively credentialed AND holding privileges at a network hospital — both flags from the nightly MD-Staff sync", "Locum tenens providers appear with a 'temporary' badge", "Dr. S. Ibarra (CMO)", "2026-05-28", "Decided"],
+          ["Insurance filter granularity", "Filter by plan brand (~45), not product — product-level churn is unmanageable", "Medicare Advantage listed as carrier + plan name", "Managed Care Director", "2026-06-03", "Decided"],
+          ["'Accepting new patients' flag", "Suppressed entirely at launch — source data is ~40% stale and a wrong 'yes' is a patient-harm complaint", "Pediatrics pilots the flag with weekly verified data", "Digital Steering Committee", "2026-06-17", "Decided"],
+          ["Provider photo fallback", "Initials avatar; stock photos prohibited", "—", "—", "—", "Open — with brand team"]
+        ]
+      }
+    ],
+    "dorExtra": ["The SMEs who can decide are identified and reachable"],
+    "dod": [
+      "Every rule has a decider and a date",
+      "Exceptions explicit for each rule",
+      "Open items routed to Resolved Blocking Decisions with owners",
+      "A developer could implement from this without asking anyone"
+    ]
+  }
+}
