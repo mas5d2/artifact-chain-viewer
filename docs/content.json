@@ -2258,5 +2258,1201 @@
       "doc": true,
       "note": "A one-pager. Table format keeps it honest - audience, journey, evidence - but prose is acceptable at this size."
     }
+  },
+  "experience_architecture": {
+    "tldr": "The structural model of the experience: sitemap, page and screen types, navigation, and the priority journeys drawn through them. The skeleton everything else hangs on \u2014 deliberately structural, not visual.",
+    "good": [
+      "The sitemap and the navigation model agree with each other",
+      "Every priority journey can be traced through named page types, start to finish",
+      "Page types are few and reusable \u2014 a new page type needs to earn its existence",
+      "It shows structure, not design: boxes and arrows, no layouts"
+    ],
+    "template": {
+      "type": "outline",
+      "sections": [
+        [
+          "Sitemap",
+          "Full structure, two to three levels"
+        ],
+        [
+          "Page & screen types",
+          "Each distinct template, with its job"
+        ],
+        [
+          "Navigation model",
+          "Primary nav, utility nav, cross-links, search's role"
+        ],
+        [
+          "Priority journeys",
+          "The top journeys drawn as paths through the sitemap"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "sections": [
+          [
+            "Sitemap",
+            [
+              "Home",
+              "Rates & Products \u2192 hub + 12 product pages",
+              "Locations \u2192 locator + 22 branch pages",
+              "Learn \u2192 blog hub + articles",
+              "About \u2192 4 standard pages",
+              "Book an Appointment \u2192 panel, reachable globally"
+            ]
+          ],
+          [
+            "Page & screen types",
+            [
+              "Home \u2014 orient and route to rates, locations, booking",
+              "Rates hub \u2014 compare products at headline level",
+              "Product page \u2014 rate table, disclosures, booking CTA",
+              "Locator \u2014 map + list of branches and ATMs",
+              "Branch page \u2014 hours, services, booking",
+              "Article & standard page \u2014 supporting content"
+            ]
+          ],
+          [
+            "Navigation model",
+            "Primary nav mirrors sitemap top level; booking is a persistent header action, not a nav item; search is deferred (small site, strong nav); footer carries compliance links and disclosures index."
+          ],
+          [
+            "Priority journeys",
+            [
+              "Compare & book: home or campaign \u2192 rates hub \u2192 product page \u2192 booking panel",
+              "Find a branch: any page \u2192 locator \u2192 branch page",
+              "Learn & convert: article \u2192 related product page"
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "sections": [
+          [
+            "Sitemap",
+            [
+              "Home",
+              "Find a Doctor \u2192 search + 2,400 profiles",
+              "Locations \u2192 finder + 38 location pages",
+              "Services \u2192 hub + ~60 service lines",
+              "Patients & Visitors \u2192 8 standard pages",
+              "Careers \u2192 landing + Workday handoff",
+              "News \u2192 hub + stories"
+            ]
+          ],
+          [
+            "Page & screen types",
+            [
+              "Home \u2014 route by intent: doctor, location, service",
+              "Provider search & profile \u2014 the flagship pair",
+              "Location finder & detail \u2014 urgent-care prominence",
+              "Service line \u2014 condition/treatment info linking to providers and locations",
+              "Standard page, careers landing, news story"
+            ]
+          ],
+          [
+            "Navigation model",
+            "Primary nav is the three intents plus careers; 'Find a Doctor' is also a persistent header action; site search covers content pages but hands provider queries to the directory; one nav across all three hospital brands."
+          ],
+          [
+            "Priority journeys",
+            [
+              "Find a doctor: home \u2192 search \u2192 filtered results \u2192 profile \u2192 contact",
+              "Urgent care now: home \u2192 locations \u2192 nearest urgent care (two taps max on mobile)",
+              "Service to specialist: service line \u2192 related providers \u2192 profile"
+            ]
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Sitemap + structure diagrams",
+      "doc": false,
+      "note": "Diagrams (FigJam, whiteboard export) with light annotation. If it's becoming a prose document, it's drifting away from what UX, Creative, and Architecture actually consume."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Sitemap, page types, navigation, and journeys are all present and consistent",
+      "Every priority journey traces through named page types",
+      "Creative, BA, and Architecture have each read it against their needs",
+      "Page types are stable enough for the content-type list to build on"
+    ]
+  },
+  "technical_content_model": {
+    "tldr": "The buildable content schema for the capability: types, fields, validation, relationships, taxonomy, and how editing behaves. Where the Initial Content-Type List said 'Article has an Author', this says exactly how.",
+    "good": [
+      "Every field has a type, validation, and a reason to exist",
+      "Editorial behavior is specified \u2014 what editors can touch, what's locked, what's required to publish",
+      "Sync-fed fields are marked read-only in the model, not by convention",
+      "It matches the approved creative \u2014 no field the design can't show, no design element without a field"
+    ],
+    "template": {
+      "type": "table",
+      "columns": [
+        "Content type",
+        "Field",
+        "Type & validation",
+        "Editorial behavior",
+        "Notes"
+      ],
+      "rows": [
+        [
+          "Article",
+          "title",
+          "String, 5-90 chars, required",
+          "Editable",
+          "Drives page title and card"
+        ],
+        [
+          "Article",
+          "author",
+          "Reference \u2192 Person, required",
+          "Editable, filtered to active",
+          "One author at launch"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          [
+            "Product",
+            "rateTable",
+            "Array of Rate references, auto-populated",
+            "Read-only \u2014 fed by pipeline",
+            "Never hand-editable; NCUA traceability"
+          ],
+          [
+            "Rate",
+            "value / apy / term / effectiveAt",
+            "Decimal(3), decimal(2), enum, datetime \u2014 all required",
+            "Read-only \u2014 pipeline writes",
+            "Audit log entry per write"
+          ],
+          [
+            "Product",
+            "disclosures",
+            "Array of Disclosure references, min 1 to publish",
+            "Editable by compliance role only",
+            "Publish blocked without an approved disclosure"
+          ],
+          [
+            "Disclosure",
+            "body / approvalState",
+            "Rich text (no images); enum draft\u2192review\u2192approved",
+            "Compliance role edits; approval locks body",
+            "Versioned; products reference a version"
+          ],
+          [
+            "Product",
+            "promoBand",
+            "Object {label, rate, disclosure ref}, optional",
+            "Marketing edits; requires approved disclosure",
+            "Renders only when disclosure approved (BR-4)"
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          [
+            "Provider",
+            "npi / name / credentials / privileges",
+            "From sync, all required",
+            "Read-only \u2014 nightly MD-Staff sync",
+            "Publish blocked if credentialing flags fail (BR-1)"
+          ],
+          [
+            "Provider",
+            "specialties",
+            "Array of Specialty references, min 1",
+            "Read-only \u2014 mapped via specialty table",
+            "210 source codes \u2192 ~40 patient terms"
+          ],
+          [
+            "Provider",
+            "bio",
+            "Rich text, max 200 words, optional",
+            "Editable by comms leads only",
+            "Profile renders without it (RBD 2026-07-01)"
+          ],
+          [
+            "Provider",
+            "photo",
+            "Image, 800px min, optional",
+            "Editable by marketing",
+            "Initials avatar fallback in the front end"
+          ],
+          [
+            "Specialty",
+            "patientTerm / sourceCodes",
+            "String; array of MD-Staff codes",
+            "Medical Staff Office edits via mapping table",
+            "The 210\u219240 mapping lives here"
+          ],
+          [
+            "InsurancePlan",
+            "carrier / planName",
+            "String, required",
+            "Managed care office edits",
+            "~45 plan brands, filter facet"
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Schema in the CMS/code + reference table",
+      "doc": false,
+      "note": "The real model is CMS configuration or schema code; this table is its human-readable contract for Dev and QA. If the table and the schema disagree, the schema is lying or the table is stale \u2014 fix whichever."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Every field has type, validation, and editorial behavior",
+      "Sync-fed vs editable is enforced in the model, not documented as a convention",
+      "Publish-blocking rules implement the relevant business rules",
+      "Dev has built against it and QA can seed test content from it"
+    ]
+  },
+  "api_integration_specs": {
+    "tldr": "The pinned contract for an integration: endpoints or files, auth, field-level mappings, error behavior, limits, and environments. Where Integration Context said what and why, this says exactly how.",
+    "good": [
+      "A developer can implement from it without contacting the vendor",
+      "Mappings are field-level, with types and transformations, not 'we sync the data'",
+      "Error and edge behavior is specified \u2014 including the boring ones like timeouts and partial files",
+      "Sandbox and production environments are both documented, with who owns credentials"
+    ],
+    "template": {
+      "type": "outline",
+      "sections": [
+        [
+          "Contract",
+          "Endpoints / files / events, formats, and versions \u2014 link the machine-readable spec if one exists"
+        ],
+        [
+          "Authentication",
+          "Method, credential ownership, rotation"
+        ],
+        [
+          "Data mappings",
+          "Source field \u2192 destination field, type, transformation"
+        ],
+        [
+          "Errors, limits & edge behavior",
+          "Failure modes and the agreed response to each"
+        ],
+        [
+          "Environments",
+          "Sandbox and production details, and how they differ"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "sections": [
+          [
+            "Contract",
+            [
+              "SFTP pickup: /outbound/rates_YYYYMMDD_HHMM.txt, fixed-width per spec v3 (confirmed current 7/11)",
+              "Full file every 15 min, ~40 rows; no delta format",
+              "Weekend behavior: file still drops, values unchanged"
+            ]
+          ],
+          [
+            "Authentication",
+            "SFTP key pair; private key in Azure Key Vault; Meridian IT (D. Alvarez) owns the account; rotation annually per their policy."
+          ],
+          [
+            "Data mappings",
+            [
+              "cols 1-8 productCode \u2192 Product.externalId (string, exact match)",
+              "cols 9-15 rateValue \u2192 Rate.value (implied 3 decimals: 00425 \u2192 4.25)",
+              "cols 16-22 apy \u2192 Rate.apy (same encoding)",
+              "cols 23-24 termCode \u2192 Rate.term (lookup table, 12 known codes)",
+              "cols 25-38 effectiveAt \u2192 Rate.effectiveAt (Central time \u2192 UTC)"
+            ]
+          ],
+          [
+            "Errors, limits & edge behavior",
+            [
+              "File missing or older than 60 min \u2192 rates hidden site-wide (BR-3), alert to ops channel",
+              "Parse failure on any row \u2192 whole file rejected, previous rates stand, alert",
+              "Unknown productCode \u2192 row skipped, logged, weekly report",
+              "Corrections arrive as a new full file \u2014 no special handling (RBD 2026-07-08)"
+            ]
+          ],
+          [
+            "Environments",
+            "Meridian provides a test SFTP folder with synthetic files; production credentials requested (tracked as external input); no rate values in test files are real."
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "sections": [
+          [
+            "Contract",
+            [
+              "Nightly SFTP export: providers_full_YYYYMMDD.csv, UTF-8, ~2,400 rows, all-records (no deltas)",
+              "Export lands 02:00-03:30 Pacific; our pipeline runs at 04:00 with a late-file check",
+              "Column dictionary v2 from MD-Staff admin (received 6/20)"
+            ]
+          ],
+          [
+            "Authentication",
+            "SFTP key pair; hospital IT owns the export job; our pull credentials in the pipeline vault; no PHI columns in the export \u2014 verified against the dictionary with compliance."
+          ],
+          [
+            "Data mappings",
+            [
+              "npi \u2192 Provider.npi (10-digit, validation: Luhn check)",
+              "specialty_codes (semicolon list) \u2192 Provider.specialties via mapping table; unmapped codes \u2192 exception report, not published",
+              "cred_status + privilege_flags \u2192 publishEligible boolean (BR-1)",
+              "location_ids \u2192 Provider.locations references; unknown location \u2192 exception",
+              "photo_url \u2192 fetched and cached; 404 \u2192 initials fallback"
+            ]
+          ],
+          [
+            "Errors, limits & edge behavior",
+            [
+              "File absent by 05:00 \u2192 yesterday's data stands, alert; directory shows a freshness timestamp internally",
+              "Provider present yesterday, absent today \u2192 unpublished (not deleted), flagged for Medical Staff Office review",
+              "Row count swing >10% \u2192 pipeline pauses for human confirmation",
+              "Duplicate npi across hospitals \u2192 merged to one record, all locations listed (RBD 2026-07-07)"
+            ]
+          ],
+          [
+            "Environments",
+            "MD-Staff sandbox export (500 synthetic rows) drives dev and QA; production export to stage weekly for volume testing; Typesense reindex follows every successful import."
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Contract file + context page",
+      "doc": false,
+      "note": "Where a machine-readable contract exists (OpenAPI, column dictionary), that file is the artifact \u2014 prose only carries what the contract can't: ownership, edge behavior, environment quirks."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Implementable without contacting the vendor",
+      "Field-level mappings with types and transformations",
+      "Every identified failure mode has an agreed response",
+      "Dev and TechOps have reviewed; credentials ownership is unambiguous"
+    ]
+  },
+  "initial_design_system_direction": {
+    "tldr": "The first visual foundations: type, color, spacing, grid, breakpoints, and the shared component direction. Enough for feature creative to start consistent \u2014 explicitly not the finished design system.",
+    "good": [
+      "Tokens have names and values, even if provisional \u2014 'we'll pick blues later' blocks everyone",
+      "Breakpoints are decided; they're expensive to change once components exist",
+      "The first 8-12 shared components are named with their jobs",
+      "Constraints from the client's brand are recorded, not rediscovered per feature"
+    ],
+    "template": {
+      "type": "outline",
+      "sections": [
+        [
+          "Type & scale",
+          "Families, weights, the size scale"
+        ],
+        [
+          "Color & tokens",
+          "Palette mapped to semantic tokens"
+        ],
+        [
+          "Grid, spacing & breakpoints",
+          "Columns, spacing scale, the breakpoint set"
+        ],
+        [
+          "Core components",
+          "The shared components features will build from"
+        ],
+        [
+          "Brand constraints",
+          "What the client's brand system fixes and what it leaves open"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "sections": [
+          [
+            "Type & scale",
+            "Brand face 'Calluna' for display (client-licensed), Inter for UI and tables; 1.25 modular scale, 8 steps; tabular figures mandatory anywhere a rate appears."
+          ],
+          [
+            "Color & tokens",
+            [
+              "Meridian navy \u2192 --color-primary",
+              "Harvest gold \u2192 --color-accent (promo band only, per compliance sensitivity)",
+              "Semantic set: surface, text, muted, positive, warning, rate-fresh, rate-stale",
+              "Dark mode out of scope \u2014 brand team decision, recorded"
+            ]
+          ],
+          [
+            "Grid, spacing & breakpoints",
+            "12-column, 1200px max; 4px spacing scale; breakpoints 375 / 768 / 1200. Rate tables get a dedicated compact spacing variant."
+          ],
+          [
+            "Core components",
+            [
+              "Rate table (with stale-feed variant)",
+              "Product card",
+              "Disclosure accordion",
+              "CTA pair (book + call)",
+              "Locator map panel",
+              "Alert banner",
+              "Form field set for the callback form"
+            ]
+          ],
+          [
+            "Brand constraints",
+            "Logo clearspace and navy are fixed by the client's 2024 brand book; gold usage needs compliance sign-off near rates; photography style is client-supplied library only."
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "sections": [
+          [
+            "Type & scale",
+            "Single family (Source Sans) across all three hospital brands \u2014 brand expression happens in color and imagery, not type; 1.2 scale, larger base (17px) per accessibility review of the patient audience."
+          ],
+          [
+            "Color & tokens",
+            [
+              "Three brand palettes \u2192 one semantic token set: --brand-primary resolves per hospital theme",
+              "Shared clinical neutrals for directory and wayfinding UI",
+              "Urgent care amber fixed across all brands \u2014 wayfinding consistency overrides brand",
+              "All pairs AA at 17px base"
+            ]
+          ],
+          [
+            "Grid, spacing & breakpoints",
+            "12-column, 1280px max; 4px scale; breakpoints 375 / 744 / 1280; mobile-first \u2014 68% of legacy traffic is phones."
+          ],
+          [
+            "Core components",
+            [
+              "Provider card (photo/avatar variants, temp badge)",
+              "Filter rail / drawer",
+              "Search input with typeahead",
+              "Location card with distance chip",
+              "Service-line hero",
+              "Sticky contact bar (mobile profile)",
+              "Alert banner (ER wait, closures)"
+            ]
+          ],
+          [
+            "Brand constraints",
+            "Rebrand lands mid-project: everything routes through tokens, no hard-coded brand values anywhere \u2014 this is the load-bearing constraint. Photography direction arrives with the rebrand; components must not depend on image tone."
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Figma file (foundations + starter library)",
+      "doc": false,
+      "note": "The artifact is the Figma foundations file and its styles/variables. This page is what it must cover \u2014 the tokens themselves live in the file and its code export, never in a document."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Type, color tokens, spacing, grid, and breakpoints all have values",
+      "Core components named with their jobs",
+      "Brand constraints recorded with their source",
+      "Dev has reviewed token naming; feature creative can start without asking foundational questions"
+    ]
+  },
+  "business_problem_outcomes": {
+    "tldr": "The problem being solved and the outcomes that will prove it's solved \u2014 the project's reason to exist, in one page. Everything downstream should be able to cite it.",
+    "good": [
+      "The problem is the client's business problem, not 'the website is old'",
+      "Outcomes are observable changes in the world, not deliverables",
+      "Evidence for the problem is attached \u2014 even thin evidence, labeled as thin",
+      "Non-goals are stated: the outcomes this project is explicitly not chasing"
+    ],
+    "template": {
+      "type": "outline",
+      "sections": [
+        [
+          "The problem",
+          "What is costing the client money, trust, or time \u2014 with evidence"
+        ],
+        [
+          "Desired outcomes",
+          "The observable changes that define success"
+        ],
+        [
+          "Evidence",
+          "What supports the problem statement, and how strong it is"
+        ],
+        [
+          "Non-goals",
+          "Nearby outcomes this project deliberately does not chase"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "sections": [
+          [
+            "The problem",
+            "Meridian loses rate-shopping prospects to two regional competitors whose sites answer 'what's your rate?' in one click, and burns branch staff time on calls the website should absorb. Membership growth has been flat for three years while the competitors grew 6-9%."
+          ],
+          [
+            "Desired outcomes",
+            [
+              "Prospects can find any current rate in under 30 seconds",
+              "Online appointment booking becomes the top acquisition channel for new accounts",
+              "Informational calls to branches drop 30%",
+              "Zero rate-accuracy compliance findings after launch"
+            ]
+          ],
+          [
+            "Evidence",
+            "Call-center logs (top 5 drivers are all informational); mystery-shop comparison vs competitors; NCUA audit finding on a stale published rate; flat membership data. Evidence is strong on calls and compliance, inferential on lost prospects."
+          ],
+          [
+            "Non-goals",
+            "Not chasing online account opening (vendor roadmap, next year); not trying to grow the under-25 segment this project; not replacing online banking."
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "sections": [
+          [
+            "The problem",
+            "Post-merger, patients can't find doctors across the network \u2014 three sites with three inconsistent directories \u2014 and the confusion shows up as misrouted calls, out-of-network surprises, and leakage to competitor systems for findable specialists."
+          ],
+          [
+            "Desired outcomes",
+            [
+              "A patient can find an in-network doctor by specialty and insurance in one session",
+              "Provider-lookup verification calls to the medical staff office drop by half",
+              "Directory becomes the top entry point for new-patient contact",
+              "Nursing application completion rate improves after the Workday handoff is smoothed"
+            ]
+          ],
+          [
+            "Evidence",
+            "62% of legacy site searches are provider lookups; ~50 verification calls/week to the medical staff office; patient complaints citing insurance mismatch; HR's 40% application drop-off. Strong across the board \u2014 this one is unusually well-evidenced."
+          ],
+          [
+            "Non-goals",
+            "Not building scheduling this project (MyChart mapping is next year); not unifying the three hospitals' brands (that's the rebrand project, we absorb it); not a patient portal."
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Written document (one page)",
+      "doc": true,
+      "note": "One page of prose. It gets cited by other artifacts constantly, so keep it short enough that people actually re-read it."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Problem stated in business terms with evidence attached",
+      "Outcomes are observable, not deliverables",
+      "Non-goals are explicit",
+      "Client stakeholders have confirmed this is the problem they're paying to solve"
+    ]
+  },
+  "audience_priorities": {
+    "tldr": "Which audiences matter most and why \u2014 the ranking that settles design arguments before they start. Deliberately lightweight: a defensible ordering, not persona theater.",
+    "good": [
+      "It's actually ranked \u2014 'all audiences are important' is a refusal to decide",
+      "Each ranking has a why tied to the business problem",
+      "The implication column says what the rank changes about the work",
+      "Deprioritized audiences are named too, so the decision is visible"
+    ],
+    "template": {
+      "type": "table",
+      "columns": [
+        "Rank",
+        "Audience",
+        "Why this rank",
+        "What it changes"
+      ],
+      "rows": [
+        [
+          "1",
+          "Returning customers",
+          "80% of revenue; retention is the stated problem",
+          "Self-service flows get design priority over acquisition pages"
+        ],
+        [
+          "2",
+          "First-time buyers",
+          "Growth target, but secondary to retention this year",
+          "Onboarding polish deferred to phase 2"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          [
+            "1",
+            "Rate-shopping prospects",
+            "The growth problem lives here; they bounce to competitors today",
+            "Rates hub and product pages lead every design and performance decision"
+          ],
+          [
+            "2",
+            "Current members with practical tasks",
+            "Highest volume; source of the call-center burden",
+            "Locator and hours get top-nav placement and mobile-first treatment"
+          ],
+          [
+            "3",
+            "Small-business owners",
+            "Client growth priority, but evidence is thin (flagged assumption)",
+            "One strong commercial landing page; no dedicated journey this project"
+          ],
+          [
+            "4",
+            "Community & press",
+            "Matters to the brand, not to the problem",
+            "Standard pages; no custom design investment"
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          [
+            "1",
+            "Patients & caregivers seeking care",
+            "The merger's promise is 'one front door to care' \u2014 this is that door",
+            "Directory and locations get the flagship treatment; every tradeoff resolves their way"
+          ],
+          [
+            "2",
+            "Job seekers (nursing first)",
+            "Board-level priority; measurable application drop-off to fix",
+            "Careers gets real design attention, not a link-farm page"
+          ],
+          [
+            "3",
+            "Referring physicians",
+            "Meaningful call volume, but a workaround exists (they call)",
+            "Served by the same directory with credentials visible; no dedicated portal"
+          ],
+          [
+            "4",
+            "Donors & community",
+            "Foundation has its own site",
+            "Link out; explicitly out of scope"
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "One-page ranked table",
+      "doc": true,
+      "note": "A ranked table on one page. If it grows persona documents, it's become a different (heavier) artifact than anyone asked for."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Audiences are ranked, not just listed",
+      "Each rank cites the business problem or evidence",
+      "Each rank states what it changes about the work",
+      "Strategy and the client agree \u2014 especially about who is at the bottom"
+    ]
+  },
+  "current_state": {
+    "tldr": "A concise, evidence-backed picture of what exists today: systems, content, workflows, and where they hurt. The baseline that keeps 'better' honest \u2014 and the early-warning system for surprises.",
+    "good": [
+      "Concise \u2014 a briefing that gets read, with links to the raw material",
+      "Pain points come with evidence, not vibes",
+      "The systems section feeds the integration inventory without rework",
+      "Access gaps discovered here are flagged as external asks immediately"
+    ],
+    "template": {
+      "type": "outline",
+      "sections": [
+        [
+          "Systems & workflows",
+          "What runs today, who touches it, how content gets published"
+        ],
+        [
+          "Content estate",
+          "What exists, roughly how much, and its condition"
+        ],
+        [
+          "Pain points",
+          "Where it hurts, with evidence per point"
+        ],
+        [
+          "Access & unknowns",
+          "What we could and couldn't see; asks already raised"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "sections": [
+          [
+            "Systems & workflows",
+            [
+              "WordPress 5.x, unpatched 14 months, one internal editor",
+              "Rates updated by hand from an emailed spreadsheet \u2014 twice weekly, the audit-finding root cause",
+              "Locator is a paid plugin, license expired",
+              "Booking is phone-only today; no digital trail"
+            ]
+          ],
+          [
+            "Content estate",
+            "~180 pages: 12 product pages (inconsistent), 140 blog posts (50 worth keeping per marketing), ~30 orphaned pages. Media library has unknown licensing on older images \u2014 flagged."
+          ],
+          [
+            "Pain points",
+            [
+              "Manual rate entry caused the NCUA finding (documented)",
+              "Top 5 call drivers are all findable-online questions (call logs)",
+              "Mobile locator is unusable \u2014 71% locator bounce on phones (analytics)"
+            ]
+          ],
+          [
+            "Access & unknowns",
+            "Full WP admin and analytics access received. No Fiserv documentation yet \u2014 export spec requested (external ask, tracked). Booking vendor contract terms unseen."
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "sections": [
+          [
+            "Systems & workflows",
+            [
+              "Three CMSes: Drupal 7 (EOL), WordPress, and a static site nobody can edit",
+              "Provider updates: each hospital emails a webmaster; St. Mary's backlog is 6 weeks",
+              "MD-Staff exists and is authoritative for credentialing \u2014 but feeds nothing today",
+              "Analytics on two of three sites; third has none"
+            ]
+          ],
+          [
+            "Content estate",
+            "~5,000 pages across three sites; directory data duplicated and contradictory between them (same physician, different specialties listed). Comms leads estimate ~800 pages worth keeping \u2014 triage board formed."
+          ],
+          [
+            "Pain points",
+            [
+              "Same-physician contradictions between sites (documented examples collected)",
+              "62% of searches are provider lookups against directories nobody trusts",
+              "6-week update backlog means departed physicians still listed (patient complaints on file)"
+            ]
+          ],
+          [
+            "Access & unknowns",
+            "Admin access to two CMSes; static site source located in a retired contractor's repo \u2014 recovered. MD-Staff export capability confirmed but dictionary pending (external ask). No analytics baseline for the third site \u2014 noted as a measurement gap."
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Written brief + linked inventories",
+      "doc": true,
+      "note": "A short readable brief with the raw inventories (page lists, system spreadsheets) linked, not embedded. The brief is for humans; the inventories feed downstream artifacts."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Systems, content, workflows, and pain points all covered concisely",
+      "Every pain point has evidence attached",
+      "Access gaps are raised as external asks, not sat on",
+      "The integration inventory can start from the systems section without re-discovery"
+    ]
+  },
+  "representative_content_test_data": {
+    "tldr": "Realistic content and data \u2014 including the ugly cases \u2014 sufficient to build and test the capability. The artifact that stops 'works with lorem ipsum' from shipping.",
+    "good": [
+      "Edge cases are deliberate: longest names, missing fields, worst formatting that's actually in the source",
+      "Volume is realistic where volume matters \u2014 search needs thousands, not five",
+      "Every item says which edge it covers, so gaps are visible",
+      "It's loaded where Dev and QA work, not attached to a ticket as a zip"
+    ],
+    "template": {
+      "type": "table",
+      "columns": [
+        "Item / set",
+        "Represents",
+        "Edge cases covered",
+        "Source",
+        "Loaded where"
+      ],
+      "rows": [
+        [
+          "50 product records",
+          "Typical catalog spread",
+          "Longest title (78 chars), no image, discontinued flag",
+          "Client export, anonymized",
+          "Dev + QA seed script"
+        ],
+        [
+          "3 empty-state sets",
+          "New-tenant experience",
+          "Zero orders, zero history",
+          "Synthetic",
+          "QA fixtures"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          [
+            "Rate files, 2 weeks of real samples",
+            "Normal feed behavior",
+            "Weekend unchanged files, a real correction sequence from March",
+            "Fiserv test folder",
+            "Pipeline dev + contract tests"
+          ],
+          [
+            "Malformed rate files (5)",
+            "Feed failure modes",
+            "Truncated row, unknown product code, bad date, empty file, stale timestamp",
+            "Synthetic, from spec v3",
+            "Contract test suite"
+          ],
+          [
+            "3 pilot products, full content",
+            "Real publishing path",
+            "Promo band with pending disclosure (must not render), longest disclosure (1,400 words)",
+            "Client marketing + compliance",
+            "Stage CMS"
+          ],
+          [
+            "Branch set, all 22",
+            "Locator reality",
+            "Split hours (lobby vs drive-up), temporarily closed branch, ATM-only site",
+            "Facilities spreadsheet",
+            "Stage CMS + QA fixtures"
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          [
+            "Full sandbox export, 500 synthetic providers",
+            "Pipeline and search behavior",
+            "Unmapped specialty codes, missing photos, dropped-record scenario",
+            "MD-Staff sandbox",
+            "Dev pipeline + Typesense dev index"
+          ],
+          [
+            "Production export snapshot (weekly)",
+            "Real volume and data quality",
+            "All 2,400 records with the real 30% photo gap and real name lengths (longest: 37 chars + credentials)",
+            "MD-Staff via hospital IT",
+            "Stage index only"
+          ],
+          [
+            "Seeded ineligible provider",
+            "Listing-eligibility rule (BR-1)",
+            "Credentialed but no privileges \u2014 must never appear in results",
+            "Synthetic, planted in sandbox",
+            "QA regression suite"
+          ],
+          [
+            "Duplicate-NPI pair",
+            "Multi-hospital merge rule",
+            "Same physician from two hospitals, conflicting locations",
+            "Synthetic from real pattern",
+            "QA regression suite"
+          ],
+          [
+            "Insurance plan list, real",
+            "Filter facet reality",
+            "Medicare Advantage carrier+plan naming, longest plan name",
+            "Managed care office",
+            "Stage CMS"
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Seeded dataset + fixtures",
+      "doc": false,
+      "note": "The artifact is loaded data \u2014 seed scripts, fixtures, sandbox content \u2014 not a description of data. This table is its manifest so gaps stay visible."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Every known edge case from the rules and specs has a covering item",
+      "Volume-sensitive behavior is tested at realistic volume",
+      "Data is loaded where Dev and QA actually work",
+      "QA has confirmed the set is sufficient to test the acceptance criteria"
+    ]
+  },
+  "access_environments": {
+    "tldr": "The unglamorous artifact that prevents the most common delay in delivery: who needs access to what, whether they have it, and which environments exist for the slice. Boring until it's blocking.",
+    "good": [
+      "Every row is specific: system, person, permission level \u2014 'dev team needs CMS access' is not a row",
+      "Requested dates are recorded, so aging asks are visible and chase-able",
+      "Environments are listed with their purpose \u2014 nobody tests in the wrong place",
+      "It's maintained: granted means verified working, not 'the email was sent'"
+    ],
+    "template": {
+      "type": "table",
+      "columns": [
+        "Access / environment",
+        "Who needs it",
+        "Level",
+        "Status",
+        "Requested / granted"
+      ],
+      "rows": [
+        [
+          "CMS stage admin",
+          "2 devs + QA lead",
+          "Admin",
+          "Granted, verified",
+          "Req 6/1 \u00b7 granted 6/3"
+        ],
+        [
+          "Vendor API sandbox",
+          "Integration dev",
+          "Read + write keys",
+          "Requested \u2014 aging",
+          "Req 6/2, chased 6/12"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          [
+            "Azure tenancy: resource group + SWA deploy",
+            "Dev lead + CI service principal",
+            "Contributor on RG",
+            "Granted, verified by deploy",
+            "Req 6/20 \u00b7 granted 7/1"
+          ],
+          [
+            "Fiserv test SFTP folder",
+            "Pipeline dev",
+            "Read",
+            "Granted; sample files flowing",
+            "Req 6/22 \u00b7 granted 7/8"
+          ],
+          [
+            "Fiserv production SFTP",
+            "CI pipeline only",
+            "Read",
+            "Requested \u2014 needed 2 weeks before launch",
+            "Req 7/10 (external, tracked)"
+          ],
+          [
+            "Coconut sandbox",
+            "Frontend dev",
+            "Test org admin",
+            "Granted",
+            "Req 6/25 \u00b7 granted 6/26"
+          ],
+          [
+            "Stage CMS",
+            "Team + compliance reviewer",
+            "Role-based (compliance role for R. Whitfield)",
+            "Granted; compliance role verified",
+            "7/5"
+          ],
+          [
+            "Environments",
+            "dev / stage / prod SWA + stage content dataset",
+            "\u2014",
+            "All live; prod locked to CI",
+            "7/1"
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          [
+            "MD-Staff sandbox SFTP",
+            "Pipeline dev",
+            "Read",
+            "Granted; 500-row export flowing",
+            "Req 5/15 \u00b7 granted 6/2"
+          ],
+          [
+            "MD-Staff production export",
+            "Pipeline service account",
+            "Read, nightly",
+            "Granted after security review",
+            "Req 5/15 \u00b7 granted 6/28"
+          ],
+          [
+            "Acquia dev/stage/prod",
+            "Team",
+            "Role-based; prod deploy via CI only",
+            "Granted, verified",
+            "6/5"
+          ],
+          [
+            "Typesense stage cluster",
+            "2 devs + QA",
+            "API keys (search + admin split)",
+            "Granted",
+            "6/20"
+          ],
+          [
+            "Workday job feed",
+            "Integration dev",
+            "Read token",
+            "Requested \u2014 aging, chased twice",
+            "Req 6/10, chased 6/24 + 7/8"
+          ],
+          [
+            "Hospital VPN (for MD-Staff dashboard)",
+            "BA + Architecture",
+            "Standard",
+            "Granted for BA; Architecture pending",
+            "Req 6/12 \u00b7 partial 6/30"
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "Living checklist / table in the tracker",
+      "doc": false,
+      "note": "A tracked table that gets updated and chased \u2014 the 'requested' column is the whole point. A snapshot in a document can't age visibly."
+    },
+    "dorExtra": [],
+    "dod": [
+      "Every access the slice needs has a row with a named person and level",
+      "Granted means verified working by the person who needs it",
+      "Aging requests are visibly aging and being chased",
+      "Environments exist and their purposes are agreed"
+    ]
+  },
+  "success_measures": {
+    "tldr": "The small set of measures that will show whether the outcomes happened. Decided early, while nobody's invested in flattering numbers \u2014 with baselines captured before the old site disappears.",
+    "good": [
+      "Few \u2014 three to six; a dashboard of twenty measures measures nothing",
+      "Each traces to a desired outcome, not to what's easy to count",
+      "Baselines are captured now, before the current state stops existing",
+      "Each has an owner and a review moment \u2014 measures nobody reads aren't measures"
+    ],
+    "template": {
+      "type": "table",
+      "columns": [
+        "Measure",
+        "Traces to outcome",
+        "Baseline",
+        "Target",
+        "How & who"
+      ],
+      "rows": [
+        [
+          "Task completion: find a price",
+          "Self-service outcome",
+          "38% (usability test, n=12)",
+          "80%+",
+          "Repeat test at launch \u00b7 UX"
+        ],
+        [
+          "Support tickets tagged 'how do I'",
+          "Deflection outcome",
+          "220/mo",
+          "under 120/mo",
+          "Ticket tag report \u00b7 CX monthly"
+        ]
+      ]
+    },
+    "examples": [
+      {
+        "name": "Meridian Credit Union",
+        "rows": [
+          [
+            "Time to find a current rate",
+            "Rate-shopping outcome",
+            "3:40 median (mystery shop, n=8)",
+            "Under 0:30",
+            "Repeat mystery shop at launch + 90 days \u00b7 Strategy"
+          ],
+          [
+            "Online appointments booked",
+            "Acquisition outcome",
+            "0 (phone only today)",
+            "150/mo by day 90",
+            "Coconut dashboard \u00b7 J. Park monthly"
+          ],
+          [
+            "Informational branch calls",
+            "Call-deflection outcome",
+            "~900/mo across top-5 drivers",
+            "-30% by day 120",
+            "Call-center tag report \u00b7 Ops quarterly"
+          ],
+          [
+            "Rate-accuracy findings",
+            "Compliance outcome",
+            "1 open NCUA finding",
+            "Zero, sustained",
+            "Compliance review per audit cycle \u00b7 R. Whitfield"
+          ]
+        ]
+      },
+      {
+        "name": "Cascade Health Network",
+        "rows": [
+          [
+            "Find-a-doctor completion (search \u2192 profile contact view)",
+            "One-front-door outcome",
+            "Not measurable on legacy (no funnel) \u2014 proxy baseline from search logs",
+            "55% completion",
+            "Analytics funnel \u00b7 Strategy monthly"
+          ],
+          [
+            "Provider verification calls to Medical Staff Office",
+            "Deflection outcome",
+            "~50/week (office log, 4-week sample)",
+            "Under 25/week by day 90",
+            "Office log \u00b7 BA with the office quarterly"
+          ],
+          [
+            "Insurance-mismatch complaints",
+            "Right-doctor outcome",
+            "14/mo (patient relations tags)",
+            "Under 5/mo",
+            "Patient relations report \u00b7 CX"
+          ],
+          [
+            "Nursing application completion",
+            "Recruiting outcome",
+            "60% drop-off at legacy handoff",
+            "Under 35% drop-off",
+            "Workday funnel \u00b7 HR IT after careers ships"
+          ]
+        ]
+      }
+    ],
+    "medium": {
+      "label": "One-page table",
+      "doc": true,
+      "note": "One page. The measures live here; the numbers live in whatever dashboard already exists \u2014 don't build a reporting product as a side quest."
+    },
+    "dorExtra": [
+      "Baseline data sources are accessible now, before the legacy state disappears"
+    ],
+    "dod": [
+      "Three to six measures, each tracing to a desired outcome",
+      "Baselines captured or a capture plan exists with a date",
+      "Each measure has an owner and a review cadence",
+      "Client agrees these are the numbers success will be judged by"
+    ]
   }
 }
